@@ -1,0 +1,213 @@
+{% extends "MasterHeader.html" %} {% block content %}
+
+<body>
+  <style>
+    .btn-group {
+      display: inline-block !important;
+    }
+
+    .e-grid .e-rowcell:not(.e-editedbatchcell) {
+      opacity: initial;
+    }
+
+    .e-grid .e-rowcell.e-templatecell {
+      overflow: visible;
+    }
+
+    .dropdown-menu {
+      line-height: 1.5;
+    }
+  </style>
+
+  <style>
+    .aibtn:focus {
+      box-shadow: none;
+    }
+
+    .customtxt {
+      font-size: xx-large !important;
+    }
+
+    .highlight {
+      background: #f6d155;
+      color: dimgrey;
+      font-size: 14px;
+    }
+
+    .searchicon {
+      display: inline-block;
+      width: 45px;
+      height: 45px;
+      top: calc(50% - 20px);
+      border: 2px solid #006e51;
+      border-radius: 40px;
+      z-index: 1;
+    }
+
+    .cbtn {
+      border-radius: 15px;
+      width: 150px;
+    }
+
+    /* body {
+      font-size: 12px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    } */
+  </style>
+
+  <div class="container" style="max-width: -webkit-fill-available">
+    <div
+      class="row"
+      style="
+        background-color: #e9f4f7;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      "
+    >
+      <element style="font-size: 18px">
+        Welcome Doctor <span class="loginUserFullName"></span>! Below is the
+        Interactive visual timeline(time, event type, event) of Patient
+      </element>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-12" style="height: 500px; overflow-y: scroll">
+        <div class="timeline" id="timelineView"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      iconColor: "white",
+      customClass: {
+        popup: "colored-toast",
+      },
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    var inputTokens = 0;
+    var outputTokens = 0;
+    var selectedPatient = localStorage.getItem("SelectedPatient");
+    var patientsList = [];
+    $(document).ready(function () {
+      $(".loginUserFullName")[0].innerText = localStorage.getItem("FullName");
+      getTimeline();
+    });
+    var converter = new showdown.Converter({ extensions: ["table"] });
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    var selectedDomain = "";
+    let summaryObj = null;
+    // let selectedFilesForLLM = [];
+
+    let selectedFolder = "";
+
+    var ptData = [];
+
+    function generateTimeline(timelineData) {
+      $("#timelineView").html("");
+      for (let i = 0; i < timelineData.length; i++) {
+        let tObj = timelineData[i];
+        let tClass = "left";
+        let tIcon = "";
+        if (tObj["Event Type"] == "Visit") tIcon = "docvisit.jpeg";
+        else if (tObj["Event Type"].includes("Lab")) tIcon = "diagnosis.png";
+        else if (tObj["Event Type"].includes("Medication"))
+          tIcon = "medicine.jpeg";
+        else if (tObj["Event Type"] == "Surgery") tIcon = "surgery.jpeg";
+        else tIcon = "docvisit.jpeg";
+        if (i % 2 == 0) tClass = "left";
+        else tClass = "right";
+        let substr = tObj["Event Description"].substr(0, 300);
+        // console.log(substr);
+        let tooltip_html = converter.makeHtml(tObj["Event Description"]);
+        let tHtml = `<div class="tcontainer ${tClass}">
+                        <div class="date">${tObj["Time"]}</div>
+                        <img class="icon" src="static/CDN/images/${tIcon}"></img>
+                        <div class="content">
+                          <h2>${tObj["Event Type"]}</h2>
+                          <div class="ctooltip">
+                            ${substr}<span class="ctooltiptext">${tooltip_html}</span>
+                          </div>
+                        </div>
+                      </div>`;
+        $("#timelineView").append(tHtml);
+      }
+    }
+    var timelineHtml;
+    // initialize AutoComplete component
+
+    function highlight(
+      elem,
+      keywords,
+      caseSensitive = false,
+      cls = "highlight"
+    ) {
+      const flags = caseSensitive ? "g" : "gi";
+      // Sort longer matches first to avoid
+      // highlighting keywords within keywords.
+      keywords.sort((a, b) => b.length - a.length);
+      Array.from(elem.childNodes).forEach((child) => {
+        ///let rexp =;
+        //console.log(rexp);
+        const keywordRegex = RegExp(keywords.join("|"), flags);
+        console.log(keywordRegex);
+        if (child.nodeType !== 3) {
+          // not a text node
+          highlight(child, keywords, caseSensitive, cls);
+        } else if (keywordRegex.test(child.textContent)) {
+          const frag = document.createDocumentFragment();
+          let lastIdx = 0;
+          child.textContent.replace(keywordRegex, (match, idx) => {
+            const part = document.createTextNode(
+              child.textContent.slice(lastIdx, idx)
+            );
+            const highlighted = document.createElement("span");
+            highlighted.textContent = match;
+            highlighted.classList.add(cls);
+            frag.appendChild(part);
+            frag.appendChild(highlighted);
+            lastIdx = idx + match.length;
+          });
+          const end = document.createTextNode(child.textContent.slice(lastIdx));
+          frag.appendChild(end);
+          child.parentNode.replaceChild(frag, child);
+        }
+      });
+    }
+
+    function getTimeline() {
+      Swal.fire({ title: "getting patient timeline..please wait" });
+      Swal.showLoading();
+      setTimeout(() => {
+        let paramsObj = {};
+        paramsObj.selectedPatient = selectedPatient;
+        // paramsObj.userName = userName;
+        // paramsObj.wspName = currentWsp;
+        let url = "/get_timeline?dbParams=" + JSON.stringify(paramsObj);
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            var timelineData = data;
+            //JSON.parse(data.Timeline);
+
+            generateTimeline(timelineData);
+            Swal.close();
+          });
+      }, 100);
+    }
+  </script>
+</body>
+
+{% endblock %}

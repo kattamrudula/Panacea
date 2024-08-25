@@ -1,0 +1,3271 @@
+{% extends "MasterHeader.html" %} {% block content %}
+
+<body>
+  <style></style>
+  <style>
+    #heartpointsChart {
+      width: 100%;
+      height: 120px;
+    }
+
+    #stepcountChart {
+      width: 100%;
+      height: 120px;
+    }
+
+    #caloriesChart {
+      width: 100%;
+      height: 120px;
+    }
+
+    #guageChart {
+      width: 100%;
+      height: 250px;
+    }
+  </style>
+  <style>
+    .btn-group {
+      display: inline-block !important;
+    }
+
+    .e-grid .e-rowcell:not(.e-editedbatchcell) {
+      opacity: initial;
+    }
+
+    .e-grid .e-rowcell.e-templatecell {
+      overflow: visible;
+    }
+
+    .dropdown-menu {
+      line-height: 1.5;
+    }
+  </style>
+  <style>
+    body {
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      line-height: 1 !important;
+      overflow-x: hidden;
+    }
+
+    #navbtn:hover,
+    #navbtn:focus,
+    #navbtn {
+      background-color: #337ab7;
+      border: none;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+      color: #f9fafb !important;
+    }
+
+    #footer {
+      position: fixed;
+      padding: 10px 10px 0px 10px;
+      bottom: 0;
+      width: 20%;
+      /* Height of the footer*/
+      height: 40px;
+      text-align: center;
+      /* background: grey; */
+    }
+
+    /* Add this custom CSS to your stylesheet */
+    /* #DescriptionGrid .e-frozencontent .e-headercell::after {
+    display: none !important;
+  } */
+
+    /* Define CSS styles for "Low" risk type */
+    .risk-1 {
+      background-color: rgb(49, 226, 226);
+      /* Green background for Low risk */
+      color: black;
+      /* White text color for better contrast */
+    }
+
+    /* Define CSS styles for "Medium" risk type */
+    .risk-2 {
+      background-color: #2064e2;
+      /* Green background for Low risk */
+      color: white;
+      /* Dark text color for Medium risk */
+    }
+
+    /* Define CSS styles for "High" risk type */
+    .risk-3 {
+      background-color: #ffcc29;
+      /* Yellow background for Medium risk */
+      color: #333;
+      /* White text color for better contrast */
+    }
+
+    /* Define CSS styles for "High" risk type */
+    .risk-4 {
+      background-color: orange;
+      /* Red background for High risk */
+      color: white;
+      /* White text color for better contrast */
+    }
+
+    /* Define CSS styles for "High" risk type */
+    .risk-5 {
+      background-color: #ff4e4e;
+      /* Red background for High risk */
+      color: white;
+      /* White text color for better contrast */
+    }
+
+    .red-cell {
+      background-color: red;
+      color: white;
+      /* You can adjust the text color as needed */
+    }
+
+    #Dialog {
+      text-align: left;
+      /* Center-align content within the dialog */
+      padding: 10px;
+      /* Add some padding for better appearance */
+      border-radius: 5px;
+      border-color: #666;
+      border-style: solid;
+      /* Add rounded corners to the dialog */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* Add a subtle shadow */
+    }
+
+    /* Additional styling for table within the dialog */
+    #Dialog table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    /* Style for table rows and cells within the dialog */
+    #Dialog tr {
+      border-bottom: 1px solid #ddd;
+      /* Add a border at the bottom of each row */
+    }
+
+    #Dialog td {
+      padding: 5px;
+      /* Add padding to cells for spacing */
+    }
+
+    .dialog-content table {
+      width: 100%;
+    }
+
+    .dialog-content td {
+      white-space: normal;
+      /* Allow text to wrap to the next line */
+      word-wrap: break-word;
+      /* Allow long words to break and wrap */
+    }
+
+    .header-text {
+      font-weight: bold;
+      font-size: 16px;
+      /* Adjust the font size as needed */
+    }
+
+    /* Define a CSS class for horizontal scrolling */
+    .dialog-content-horizontal-scroll {
+      overflow: auto;
+    }
+
+    /* Add your styles here */
+    .toggle-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .toggle-label {
+      margin-right: 0px;
+      margin-top: 10px;
+    }
+
+    /* .container {
+    padding: 2% 0;
+  } */
+
+    #container {
+      position: relative;
+      height: 100%;
+    }
+
+    .custom-folder-row {
+      background-color: lightblue;
+      /* Set your desired background color */
+    }
+
+    .custom-fileset-row {
+      background-color: lightgreen;
+      /* Set your desired background color */
+    }
+
+    .custom-imageset-row {
+      background-color: lightgoldenrodyellow;
+      /* Set your desired background color */
+    }
+
+    /* Use the default EJ2 TreeGrid folder icon for expand */
+    .custom-expand-icon::before {
+      background-image: url("folderIcon.png");
+      content: "";
+      /* Clear default content */
+      display: inline-block;
+      /* Ensure the element has dimensions */
+      width: 16px;
+      /* Set the width and height based on your icon size */
+      height: 16px;
+      /* content: 'e-folder'; */
+      /* Default EJ2 folder icon for expand */
+      /* font-family: 'e-icons'; */
+      /* Font family for EJ2 icons */
+    }
+
+    /* Use the default EJ2 TreeGrid folder icon for collapse */
+    .custom-collapse-icon::before {
+      background-image: url("folderIcon.png");
+      content: "";
+      /* Clear default content */
+      display: inline-block;
+      /* Ensure the element has dimensions */
+      width: 16px;
+      /* Set the width and height based on your icon size */
+      height: 16px;
+      /* content: 'e-folder'; */
+      /* Default EJ2 folder icon for collapse */
+      /* font-family: 'e-icons'; */
+      /* Font family for EJ2 icons */
+    }
+
+    .e-icons-e-treegridexpand {
+      background-image: url("folderIcon.png");
+      content: "";
+      /* Clear default content */
+      display: inline-block;
+      /* Ensure the element has dimensions */
+      width: 16px;
+      /* Set the width and height based on your icon size */
+      height: 16px;
+      /* content: 'e-folder'; */
+      /* Default EJ2 folder icon for collapse */
+      /* font-family: 'e-icons'; */
+      /* Font family for EJ2 icons */
+    }
+
+    #iconsContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    #iconsContainer i {
+      font-size: 24px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    #labelBelowIcons {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    #form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    label[for^="filesetDef"],
+    label[for^="folderDef"],
+    label[for^="imagesetDef"],
+    label[for^="shareSummary"] {
+      color: #aaa;
+      /* Use your preferred grey color */
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    #filesetFields,
+    #folderFields,
+    #imagesetFields {
+      margin-top: 15px;
+    }
+
+    .tag {
+      display: inline-block;
+      /* background-color: rgb(211, 211, 211); */
+      background-color: rgb(12, 230, 175);
+      /* Replace with your desired background color */
+      color: #000000;
+      /* Replace with your desired text color */
+      margin-left: 10px;
+      /* Adjust the spacing between name and type */
+      font-size: 0.8em;
+      /* Adjust the font size as needed */
+      /* border-radius: 20px; */
+      border-radius: 0px;
+      /* Adjust the border-radius to make it pill-shaped */
+      padding: 5px 10px;
+      /* Adjust the padding as needed */
+    }
+
+    /* Set the icon colors */
+    .e-align-top,
+    .e-delete,
+    .e-delete-1,
+    .e-align-bottom,
+    .e-all {
+      color: blue !important;
+    }
+
+    .e-file-new,
+    .e-sub-total,
+    .e-field-settings {
+      color: green !important;
+    }
+
+    .e-eye,
+    .e-description {
+      color: red !important;
+    }
+
+    /* .e-all {
+    color: yellow !important;
+  } */
+
+    /* .e-align-bottom {
+    color: orange !important;
+  } */
+
+    .e-filter {
+      color: black !important;
+    }
+
+    #DescriptionDropdownContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .tag.optional {
+      display: inline-block;
+
+      background-color: #f9fafb;
+      /* Replace with your desired background color */
+      color: #ff0000;
+      /* Replace with your desired text color */
+      margin-left: 10px;
+      /* Adjust the spacing between name and type */
+      font-size: 0.7em;
+      /* Adjust the font size as needed */
+      border-radius: 20px;
+      /* Adjust the border-radius to make it pill-shaped */
+      padding: 5px 10px;
+      /* Adjust the padding as needed */
+    }
+
+    /* .e-content.e-lib.e-touch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  } */
+
+    .item-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #dqRulesSectionTab
+      .e-tab.e-fill
+      .e-tab-header
+      .e-toolbar-item.e-active
+      .e-tab-wrap {
+      background: #202020;
+      border-radius: 0;
+    }
+
+    #dqRulesSectionTab .e-tab.e-fill .e-tab-header {
+      border-bottom: 2px Solid #202020;
+    }
+
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle {
+      font-size: 4em;
+      width: 100px;
+    }
+
+    .border-bottom {
+      width: 70%;
+      padding: 0.5em 0 0.5em 2em;
+    }
+    .no-border {
+      border: 0;
+    }
+  </style>
+
+  <style>
+    .aibtn:focus {
+      box-shadow: none;
+    }
+
+    .customtxt {
+      font-size: xx-large !important;
+    }
+
+    .highlight {
+      background: #f6d155;
+      color: dimgrey;
+      font-size: 14px;
+    }
+
+    .searchicon {
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      top: calc(50% - 20px);
+      border: 2px solid #006e51;
+      border-radius: 40px;
+      z-index: 1;
+    }
+
+    .cbtn {
+      border-radius: 15px;
+      width: 150px;
+    }
+
+    /* .swal2-html-container {
+      text-align: left;
+    } */
+
+    /* body {
+      font-size: 12px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    } */
+  </style>
+
+  <style>
+    .material #property tr#slider-showon {
+      display: none;
+    }
+
+    /* .slider_container {
+        margin-top: 45px;
+      } */
+
+    .slider_labeltext {
+      padding-bottom: 26px;
+      font-size: 13px;
+      font-weight: 500;
+      /* margin-top: 15px; */
+    }
+
+    .slider-userselect {
+      -webkit-user-select: none;
+      /* Safari 3.1+ */
+      -moz-user-select: none;
+      /* Firefox 2+ */
+      -ms-user-select: none;
+      /* IE 10+ */
+      user-select: none;
+      /* Standard syntax */
+    }
+  </style>
+  <style type="text/css">
+    .db-carousel-section .carousel-sample {
+      border: 1px solid #e5e5e5;
+      border-radius: 0.5em;
+      margin: 0 auto 2em;
+      max-width: 800px;
+      height: 485px !important;
+    }
+
+    .db-carousel {
+      background-color: inherit;
+      border-radius: 0.5em;
+    }
+
+    .db-carousel .e-carousel-items .e-carousel-item .card-title,
+    .db-carousel .e-carousel-items .e-carousel-item .card-text {
+      opacity: 0;
+      text-align: justify;
+      transform: translateY(20px);
+    }
+
+    .db-carousel .e-carousel-items .e-carousel-item.e-active .card-title,
+    .db-carousel .e-carousel-items .e-carousel-item.e-active .card-text {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    .db-carousel .e-carousel-items .e-carousel-item .card-title {
+      font-size: 20px;
+      transition: transform 0.4s ease 0.2s;
+    }
+
+    .db-carousel .e-carousel-items .e-carousel-item .card-text {
+      font-size: 14px;
+      transition: transform 0.4s ease 0.2s;
+    }
+
+    .db-carousel .e-carousel-indicators {
+      height: 3em;
+    }
+
+    .db-carousel
+      .e-carousel-indicators.e-default
+      .e-indicator-bar
+      .e-indicator
+      div {
+      background-color: #e7e7e7;
+    }
+
+    @media screen and (max-width: 480px) {
+      .db-carousel-section .carousel-sample {
+        width: 100%;
+        height: 485px !important;
+      }
+    }
+
+    .e-previous-icon,
+    .e-next-icon {
+      color: black !important;
+    }
+  </style>
+  <style type="text/css">
+    /* @keyframes animtext {
+      from {
+        width: 0;
+        transition: all 2s ease-in-out;
+      }
+    } */
+    .ptdb-carousel-section .ptcarousel-sample {
+      /* border: 1px solid #e5e5e5; */
+      /* border-radius: 0.5em; */
+      /* margin: 0 auto 2em; */
+      max-width: 1400px;
+      height: 484px !important;
+    }
+
+    .ptdb-carousel {
+      background-color: inherit;
+      border-radius: 0.5em;
+    }
+
+    .ptdb-carousel .e-carousel-items .e-carousel-item .card-title,
+    .ptdb-carousel .e-carousel-items .e-carousel-item .card-text {
+      opacity: 0;
+      text-align: justify;
+      transform: translateY(20px);
+    }
+
+    .ptdb-carousel .e-carousel-items .e-carousel-item.e-active .card-title,
+    .ptdb-carousel .e-carousel-items .e-carousel-item.e-active .card-text {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    .ptdb-carousel .e-carousel-items .e-carousel-item .card-title {
+      font-size: 20px;
+      transition: transform 0.4s ease 0.2s;
+    }
+
+    .ptdb-carousel .e-carousel-items .e-carousel-item .card-text {
+      font-size: 14px;
+      transition: transform 0.4s ease 0.2s;
+    }
+
+    .ptdb-carousel .e-carousel-indicators {
+      height: 3em;
+    }
+
+    .ptdb-carousel
+      .e-carousel-indicators.e-default
+      .e-indicator-bar
+      .e-indicator
+      div {
+      background-color: #e7e7e7;
+    }
+
+    .e-previous-icon,
+    .e-next-icon {
+      color: black !important;
+    }
+  </style>
+  <style>
+    /* Tile view card customization */
+
+    .tile_layout.card-control-section .row.filter .tile_search {
+      justify-content: flex-end;
+    }
+
+    .tile_layout.card-control-section .row .e-card {
+      text-align: left;
+    }
+
+    .tile_layout.card-control-section .control-wrapper {
+      padding: 0 20px;
+    }
+
+    .tile_layout.card-control-section .row.filter {
+      margin: 0;
+    }
+
+    .tile_layout.card-control-section .e-card .e-card-actions a {
+      border: 1px solid;
+      display: block;
+      margin: auto;
+      width: 100px;
+      border-radius: inherit;
+    }
+
+    .tile_layout.card-control-section
+      .e-card
+      .e-card-header
+      .e-card-header-caption
+      .e-card-header-title {
+      font-size: 18px;
+    }
+
+    .tile_layout.card-control-section .e-card .e-card-image {
+      height: 165px;
+      width: 200px;
+    }
+
+    .tile_layout.card-control-section
+      .row.filter
+      .col-xs-6.col-sm-6.col-lg-6.col-md-6 {
+      display: inline-flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .tile_layout.card-control-section .col-xs-6.col-sm-6.col-lg-6.col-md-6 {
+      width: 190px;
+      padding: 4px;
+      margin: 4px;
+    }
+
+    .card-control-section.tile_layout .e-card-layout {
+      margin: auto;
+      /* max-width: 190px; */
+    }
+
+    #source_link {
+      float: right;
+      margin-right: 10px;
+    }
+
+    /* @media screen and (max-width: 768px) {
+      #source_link {
+        margin-right: 0px;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .tile_layout.card-control-section .col-xs-6.col-sm-6.col-lg-6.col-md-6 {
+        width: 25%;
+      }
+      .card-control-section.tile_layout .e-card-layout {
+        max-width: 850px;
+      }
+    }
+
+    @media (min-width: 540px) {
+      .tile_layout.card-control-section .row.filter {
+        display: flex;
+      }
+      .tile_layout.card-control-section .e-card .e-card-content {
+        min-height: 60px;
+        max-height: 60px;
+      }
+    }
+
+    @media (max-width: 960px) and (min-width: 540px) {
+      .tile_layout.card-control-section .col-xs-6.col-sm-6.col-lg-6.col-md-6 {
+        width: 50%;
+      }
+      .card-control-section.tile_layout .e-card-layout {
+        max-width: 410px;
+      }
+    } */
+  </style>
+  <button
+    type="button"
+    class="btn btn-primary"
+    style="display: none"
+    data-bs-toggle="modal"
+    data-bs-target="#searchEntityModal"
+    id="searchEntityBtn"
+  ></button>
+  <div
+    class="modal fade"
+    id="searchEntityModal"
+    tabindex="-1"
+    aria-labelledby="searchEntityLabel"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchEntityLabel">
+            Search entity below
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" style="height: 400px; overflow-y: hidden">
+          <div id="searchEntityBody">
+            <div class="col-lg-12 control-section">
+              <div class="control-wrapper">
+                <div style="padding-top: 5px">
+                  <input type="text" id="entityList" tabindex="1" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="btn btn-info"
+            data-bs-dismiss="modal"
+            style="color: white"
+          >
+            Load AI powered Insights with timelines
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    style="display: none"
+    data-bs-toggle="modal"
+    data-bs-target="#pdfViewerModal"
+    id="pdfViewerBtn"
+  ></button>
+  <div
+    class="modal fade"
+    id="pdfViewerModal"
+    tabindex="-1"
+    aria-labelledby="pdfViewerLabel"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div id="pdfViewerBody">
+            <div class="col-lg-12 control-section">
+              <div class="control-wrapper">
+                <div class="row">
+                  <iframe
+                    src=""
+                    id="pdfViewer"
+                    style="width: 100%"
+                    height="500"
+                  ></iframe>
+                </div>
+                <div class="row">
+                  <div id="fileSummary"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            style="display: none"
+            data-bs-dismiss="modal"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    style="display: none"
+    data-bs-toggle="modal"
+    data-bs-target="#patientSelectModal"
+    id="patientSelectBtn"
+  ></button>
+  <div
+    class="modal fade"
+    id="patientSelectModal"
+    tabindex="-1"
+    aria-labelledby="patientSelectLabel"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>
+            Welcome Doctor <span class="loginUserFullName"></span>! Please
+            select a patient to proceed...
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div id="patientSelectBody" style="margin-top: -36px">
+            <div class="col-lg-12 control-section">
+              <div class="control-wrapper">
+                <div class="row">
+                  <div class="control-section card-control-section tile_layout">
+                    <div class="row filter">
+                      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                        <div class="e-float-input">
+                          <input
+                            type="text"
+                            required=""
+                            id="search_Card"
+                            style="width: 95%; height: 10px !important"
+                          />
+                          <!-- <span class="e-float-line"></span> -->
+                          <label class="e-float-text" style="font-size: 14px"
+                            >Search Patient</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row e-card-layout" style="text-align: center">
+                      <div class="row">
+                        <div
+                          class="row error"
+                          style="display: none; min-height: 150px"
+                        >
+                          <div
+                            class="e-error-content"
+                            style="
+                              margin: auto;
+                              height: inherit;
+                              font-size: 18px;
+                              font-weight: 500;
+                              color: inherit;
+                            "
+                          >
+                            No results found. Please try a different search.
+                          </div>
+                        </div>
+                        <div
+                          class="row"
+                          id="cardSampleRow"
+                          style="
+                            height: 100%;
+                            white-space: nowrap;
+                            justify-content: center;
+                            margin-left: 25px;
+                          "
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="row" id="logocontent">
+                      <div class="col-md-1">
+                        <img
+                          src="static/CDN/images/opentext.png"
+                          style="width: 78%"
+                        />
+                      </div>
+                      <div
+                        class="col-md-11"
+                        style="margin-left: -30px; margin-top: 8px"
+                      >
+                        Panacea leverages OpenText Content Storage V3 api to
+                        store all patient data like Prescriptions, Medical
+                        Records, Video/Phone consultations, X-Ray/MRI images
+                        securely
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row" style="margin-top: 10px">
+              <div style="display: flex; font-size: 12px">
+                <img
+                  src="static/CDN/images/gemini.gif"
+                  style="
+                    display: none;
+                    width: 100px;
+                    margin-top: -30px;
+                    margin-right: 12px;
+                  "
+                  id="geminigif"
+                />
+                <div id="stage1" style="display: none">
+                  <div class="text-primary text-wrap" style="width: 5rem">
+                    Converting files to text
+                  </div>
+                  
+                </div>
+                <div id="stage2" style="display: none">
+                  <div style="margin-top: 18px">
+                    <i
+                      class="bi bi-arrow-right"
+                      style="color: black; font-weight: bolder"
+                    ></i>
+                  </div>
+                  &nbsp;&nbsp;
+                  <div class="text-primary text-wrap" style="width: 8rem">
+                    Converting multi-language to english
+                  </div>
+                </div>
+                <div id="stage3" style="display: none">
+                  <div style="margin-top: 18px">
+                    <i
+                      class="bi bi-arrow-right"
+                      style="color: black; font-weight: bolder"
+                    ></i>
+                  </div>
+                  &nbsp;&nbsp;
+                  <div class="text-primary text-wrap" style="width: 8rem">
+                    Converting multi media to text
+                  </div>
+                </div>
+                <div id="stage4" style="display: none">
+                  <div style="margin-top: 18px">
+                    <i
+                      class="bi bi-arrow-right"
+                      style="color: black; font-weight: bolder"
+                    ></i>
+                  </div>
+                  &nbsp;&nbsp;
+                  <div class="text-primary text-wrap" style="width: 10rem">
+                    Creating embeddings with vector database Faiss
+                  </div>
+                </div>
+                <div id="stage5" style="display: none">
+                  <div style="margin-top: 18px">
+                    <i
+                      class="bi bi-arrow-right"
+                      style="color: black; font-weight: bolder"
+                    ></i>
+                  </div>
+                  &nbsp;&nbsp;
+                  <div class="text-primary text-wrap" style="width: 9rem">
+                    Identifying domain with prompt engineering
+                  </div>
+                </div>
+                <div id="stage6" style="display: none">
+                  <div style="margin-top: 18px">
+                    <i
+                      class="bi bi-arrow-right"
+                      style="color: black; font-weight: bolder"
+                    ></i>
+                  </div>
+                  &nbsp;&nbsp;
+                  <div class="text-primary text-wrap" style="width: 9rem">
+                    Department Identified:
+                    <span
+                      style="color: red; font-size: 14px; font-weight: bold"
+                      id="ptDomainName"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div
+          class="modal-footer"
+          style="justify-content: flex-start; height: 60px"
+        >
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            style="position: absolute; right: 0px"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-info"
+            id="domainiden"
+            onclick="(()=>{$('#domainiden')[0].style.display='';IdentifyDomain();})()"
+            style="color: white; position: absolute; right: 80px"
+          >
+            Prepare Patient data for Diagnosis
+          </button>
+          <div
+            class="text-primary text-wrap"
+            style="
+              font-size: 20px;
+              display: none;
+              position: absolute;
+              left: 400px;
+            "
+            id="domainPart"
+          >
+            Suggested Diagnosis:
+            <span
+              style="color: red; font-weight: bold"
+              id="ptDomainName"
+            ></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    style="display: none"
+    data-bs-toggle="modal"
+    data-bs-target="#highlightModal"
+    id="highlightBtn"
+  ></button>
+  <div
+    class="modal fade"
+    id="highlightModal"
+    tabindex="-1"
+    aria-labelledby="highlightLabel"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="highlightLabel"></h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" style="height: 480px; overflow-y: hidden">
+          <div id="highlightBody">
+            <div class="row">
+              <div
+                id="highlightSummary"
+                class="form-control"
+                aria-label="Entity Summary"
+                style="
+                  height: 300px;
+                  overflow-y: auto;
+                  font-size: 12px;
+                  color: lightgray;
+                "
+              ></div>
+            </div>
+            <div class="row my-3" style="text-align: center">
+              <span id="finalReview"></span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    style="display: none"
+    data-bs-toggle="modal"
+    data-bs-target="#carouselModal"
+    id="carouselBtn"
+  ></button>
+  <div class="modal fade" id="carouselModal" tabindex="-1" aria-hidden="true">
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="highlightLabel">
+            Take a minute to understand Panacea! Click on back and forth to see
+            features.
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" style="height: 500px; overflow-y: hidden">
+          <div id="carouselBody">
+            <div class="row">
+              <div class="control-section db-carousel-section">
+                <div class="col-lg-12 content-wrapper">
+                  <div class="carousel-sample">
+                    <div id="carousel"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    style="display: none"
+    data-bs-toggle="modal"
+    data-bs-target="#filehighlightModal"
+    id="filehighlightBtn"
+  ></button>
+  <div
+    class="modal fade"
+    id="filehighlightModal"
+    tabindex="-1"
+    aria-labelledby="filehighlightLabel"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filehighlightLabel"></h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" style="height: 500px; overflow-y: scroll">
+          <div id="filehighlightBody">
+            <div class="row">
+              <iframe
+                src=""
+                id="fileViewer"
+                style="width: 100%"
+                height="400"
+              ></iframe>
+            </div>
+            <div class="row my-3" style="text-align: left">
+              <span id="filefinalReview"></span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    style="display: none"
+    data-bs-toggle="modal"
+    data-bs-target="#viewPtFilesModal"
+    id="viewPtFilesBtn"
+  ></button>
+  <div
+    class="modal fade"
+    id="viewPtFilesModal"
+    tabindex="-1"
+    aria-labelledby="viewPtFilesLabel"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewPtFilesLabel">
+            Patient Data Analysis & Compliance - Powered by OpenText Risk Guard
+            and Gemini AI
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" style="height: 600px">
+          <div id="viewPtFilesBody">
+            <div class="row">
+              <div class="control-section ptdb-carousel-section">
+                <div class="col-lg-12 content-wrapper">
+                  <div class="ptcarousel-sample">
+                    <div id="ptcarousel"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" id="prevBtn">
+            Review previous file
+          </button>
+          <button type="button" class="btn btn-info" id="nextBtn">
+            Go to next file
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="max-width: -webkit-fill-available">
+    <div
+      class="row"
+      style="
+        background-color: #e9f4f7;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      "
+    >
+      <element style="font-size: 18px">
+        Welcome Doctor <span class="loginUserFullName"></span> to Panacea!
+        <a href="#" onclick="loadWsp()" style="font-size: 14px"
+          >Please click on icon to select a patient.</a
+        >
+        <img
+          src="static/CDN/images/entity.jpg"
+          title="Search Entity"
+          class="searchicon"
+          id="ptSrchFace"
+          onclick="loadWsp()"
+        />
+      </element>
+    </div>
+    <div class="row" id="TokenDisplay" style="display: none">
+      <div class="col-md-6">
+        Input Tokens :
+        <div id="inputTokens" class="linear-progress"></div>
+      </div>
+      <div class="col-md-6">
+        Output Tokens:
+        <div id="outputTokens" class="linear-progress"></div>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 20px">
+      <div class="col-md-8">Summary</div>
+      <div class="col-md-2"></div>
+      <div class="col-md-1" style="text-align: right"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="input-group">
+          <!-- <span class="input-group-text">Entity Summary</span> -->
+          <div
+            id="ptSummary"
+            class="form-control"
+            aria-label=" Summary"
+            style="height: 500px; overflow-y: auto; font-size: 15px"
+          ></div>
+        </div>
+      </div>
+      <div class="col-md-3" style="border-radius: 1px; border-color: gray">
+        <div
+          class="row"
+          style="
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            margin-top: -30px;
+            padding-left: 130px;
+            margin-bottom: 10px;
+          "
+        >
+          AI Highlights
+        </div>
+        <div class="row mb-3" style="text-align: center">
+          <div class="col-md-6">
+            <button
+              type="button"
+              id="submit"
+              class="cbtn btn btn-outline-info"
+              style="width: 160px; text-align: left; font-size: 12px"
+              onclick="getSummary()"
+            >
+              <img
+                src="static/CDN/images/summary.png"
+                style="
+                  width: 35px;
+                  height: 30px;
+                  cursor: pointer;
+                  margin-right: 15px;
+                  margin-left: -4px;
+                "
+                title="Summary"
+              />
+              Insights
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button
+              type="button"
+              class="cbtn btn btn-outline-info"
+              style="width: 170px; text-align: left; font-size: 12px"
+              id="textRead"
+            >
+              <img
+                src="static/CDN/images/mic.png"
+                style="
+                  width: 35px;
+                  height: 30px;
+                  cursor: pointer;
+                  margin-right: 5px;
+                  margin-left: -10px;
+                "
+                title="Read out summary"
+              />Read out summary
+            </button>
+            <div id="speechMenu" style="display: none">
+              <i
+                class="bi bi-pause-circle"
+                style="font-size: 25px; cursor: pointer; color: #4399c4"
+                id="textPause"
+                title="Pause"
+                onclick="(()=>{window.speechSynthesis.pause();})()"
+              ></i>
+              <i
+                class="bi bi-play-circle"
+                style="font-size: 25px; cursor: pointer; color: #4399c4"
+                id="textPlay"
+                title="Resume"
+                onclick="(()=>{window.speechSynthesis.resume();})()"
+              ></i>
+              <i
+                class="bi bi-x-circle"
+                style="font-size: 25px; cursor: pointer; color: #4399c4"
+                id="textCancel"
+                title="Cancel"
+                onclick="(()=>{window.speechSynthesis.cancel();$('#speechMenu').hide();
+                $('#textRead').show();})()"
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="aiHighlights"></div>
+        <div class="row" style="justify-content: center;margin-top: 40px;">
+          <button
+            type="button"
+            id="ptFiles"
+            class="cbtn btn btn-link"
+            style="
+              width: 320px;
+              text-align: left;
+              font-size: 20px;
+              display: none;
+              text-decoration: none;
+            "
+            onclick="GetPatientFiles()"
+          >
+            <img
+              src="static/CDN/images/medicalfilesicon.png"
+              style="width: 65px; height: 60px; cursor: pointer"
+              title="Summary"
+            />
+            View Patient Files
+          </button>
+        </div>
+        <div class="row" style="justify-content: center; margin-top: 10px">
+          <button
+            type="button"
+            id="ptTimeline"
+            class="cbtn btn btn-link"
+            style="
+              width: 320px;
+              text-align: left;
+              font-size: 20px;
+              display: none;
+              text-decoration: none;
+            "
+            onclick="(()=>{window.open('/Timeline', '_blank');})()"
+          >
+            <img
+              src="static/CDN/images/timelineicon.png"
+              style="
+                width: 45px;
+                height: 40px;
+                cursor: pointer;
+                margin-right: 20px;
+              "
+              title="Summary"
+            />
+            View Patient Timeline
+          </button>
+        </div>
+        <div class="row" style="justify-content: center; margin-top: 20px">
+          <button
+            type="button"
+            id="ptPrescriptions"
+            class="cbtn btn btn-link"
+            style="
+              width: 320px;
+              text-align: left;
+              font-size: 20px;
+              display: none;
+              text-decoration: none;
+            "
+            onclick="(()=>{window.open('/Prescriptions', '_blank');})()"
+          >
+            <img
+              src="static/CDN/images/prescriptionicon.png"
+              style="
+                width: 45px;
+                height: 40px;
+                cursor: pointer;
+                margin-right: 20px;
+              "
+              title="Summary"
+            />
+            View Prescriptions
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script id="card_template" type="text/x-template">
+    <div class="e-card ${if(isHorizontal)} e-card-horizontal ${/if}">
+        ${if(cardImage)}
+        <div class="e-card-image" style="background-image:url(${cardImage.url})">
+            ${if(cardImage.title)}
+            <div class="e-card-title"> ${cardImage.title} </div>
+            ${/if}
+        </div>
+        ${/if} ${if(cardTitle)}
+        <div class="e-card-title"> ${cardTitle} </div>
+        ${/if} ${if(header_title || header_subtitle || header_img)}
+        <div class="e-card-header">
+            ${if(header_img)}
+            <div class="e-card-header-image ${if(header_img.isRounded)} e-card-corner ${/if}" style="background-image:url(${header_img.url})"></div>
+            ${/if} ${if(header_title || header_subtitle)}
+            <div class="e-card-header-caption">
+                ${if(header_title)}
+                <div class="e-card-header-title">${header_title}</div>${/if} ${if(header_subtitle)}
+                <div class="e-card-sub-title">${header_subtitle}</div>${/if}
+            </div>
+            ${/if}
+        </div>
+        ${/if} ${if(cardContent)}
+        <div class="e-card-content"> ${cardContent} </div>
+        ${/if} ${if(card_action_btn)}
+        <div class="e-card-actions ${if(card_action_btn.isVertical)} e-card-vertical ${/if}">
+            ${for(action_btn of card_action_btn.action_btns)} ${if(action_btn.tag === 'a')}
+            <a href="${action_btn.href}" class="e-btn e-outline e-primary" target="${action_btn.target}">${action_btn.text}</a>
+            ${else}
+            <button class="e-card-btn ${action_btn.class}">${action_btn.text}</button>
+            ${/if} ${/for}
+        </div>
+        ${/if}
+    </div>
+  </script>
+  <script type="text/x-template" id="productTemplate">
+    <div class="card" style="border:none !important">
+        <img src=${ImgPath} class="card-img-top" alt=${Title} style="height:375px;width:100%;" />
+        <div class="card-body" style="padding:1rem;">
+            <h5 class="card-title">${Title}</h5>
+            <p class="card-text">${Content}</p>
+        </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="patientTemplate">
+    ${if(FilePath.includes("Brained"))}
+      <div class="row" style="justify-content:center">
+        <img src='static/CDN/images/accessdenied.png' style="width:10%;" />
+      </div>
+      <div class="row" style="font-size:15px;margin-left:10px;margin-top: 100px;">
+        Patient denied access to the file ${FileName}
+      </div>
+    ${else}
+      <div class="row">
+        <div class="col-md-8" style="height:550px;overflow-y:scroll">
+          <div class="row">
+              <iframe src='/get_patient_file?userName=${UserName}&wspName=${WspName}&filePath=${FilePath}' style="height:375px;width:100%;"></iframe>
+          </div>
+          <div class="row">
+            <h5>${FileName} - Summary</h5>
+          </div>
+          <div class="row" style="margin-left:0px;font-size:15px;" id="Summary_${ID}">
+
+          </div>
+        </div>
+        <div class="col-md-4" style="height:484px;overflow-y:scroll">
+          <div id="Tab_${ID}">
+
+          </div>
+          <div id="SubTab_${ID}_1" style="display:none" style="font-size:15px;">
+            <div class="row" style="margin-right:0px">
+              <textarea type="text" class="form-control" placeholder="Enter your query" id="userQuery_${ID}"></textarea>
+            </div>
+            <div class="row"><button style="float:right" class="btn btn-sm btn-info my-3" id="queryDoc_${ID}" data-id="${ID}" onclick="getResponse(this)">Get Response</button>
+            <button class="btn btn-sm btn-info my-3" type="button" id="queryDocLoading_${ID}" style="display:none;float:right">
+              <span class="spinner-border spinner-border-sm" style="margin-right:5px" aria-hidden="true"></span>
+              <span role="status"> Processing...</span>
+            </button>
+          </div>
+            <br />
+            <div class="row" style="margin-right:0px">
+              <div id="fileQueryAnswer_${ID}" style="font-size:15px;text-align: left;animation: animtext 4s steps(80, end); transition: all cubic-bezier(0.1, 0.7, 1.0, 0.1);"></div>
+            </div>
+          </div>
+          <div id="SubTab_${ID}_2" style="display:none" style="font-size:15px;">
+            <div class="row mt-3">Powered by Open Text API (only for PDF)</div>
+            <div class="row mt-3"><button style="float:right" class="btn btn-sm btn-info my-3" id="riskGuardBtn_${ID}" data-id="${ID}" onclick="runRiskGuard(this)">Identify Risks</button>
+              <button class="btn btn-sm btn-info my-3" type="button" id="riskGuardBtnLoading_${ID}" style="display:none;float:right">
+                <span class="spinner-border spinner-border-sm" style="margin-right:5px" aria-hidden="true"></span>
+                <span role="status"> Processing..</span>
+              </button>
+            </div>
+            <br/>
+            <div class="row" style="margin-right:0px">
+              <div id="riskGuardAnswer_${ID}" style="font-size:15px;text-align: left;animation: animtext 4s steps(80, end); transition: all cubic-bezier(0.1, 0.7, 1.0, 0.1);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ${/if}
+  </script>
+
+  <script>
+    const driver = window.driver.js.driver;
+
+    //   {
+    //   showProgess: false,
+    //   steps: [
+    //     {
+    //       element: ".e-card-layout",
+    //       popover: {
+    //         title: "Select Patient",
+    //         description: "Please select patient.",
+    //         side: "left",
+    //         align: "start",
+    //       },
+    //     },
+    //     {
+    //       element: "#submit",
+    //       popover: {
+    //         title: "Get insights",
+    //         description: "Click button to fetch insights",
+    //         side: "bottom",
+    //         align: "start",
+    //       },
+    //     },
+    //   ],
+    // }
+    // driverObj.moveTo(0);
+
+    var inputTokens = 0;
+    var outputTokens = 0;
+    var selectedPatient = "";
+    function renderTokens() {
+      $("#TokenDisplay")[0].style.display = "";
+      var inputTokensProgress = new ej.progressbar.ProgressBar({
+        type: "Linear",
+        height: "30",
+        width: "100%",
+        showProgressValue: true,
+        trackThickness: 20,
+        progressThickness: 20,
+        role: "Info",
+        //load: progressLoad,
+        labelStyle: {
+          textAlignment: "Center",
+          color: "#ffffff",
+        },
+        textRender: showInputTokens,
+        animation: {
+          enable: true,
+          duration: 2000,
+          delay: 0,
+        },
+      });
+      inputTokensProgress.appendTo("#inputTokens");
+      var outputTokensProgress = new ej.progressbar.ProgressBar({
+        type: "Linear",
+        height: "30",
+        width: "100%",
+        showProgressValue: true,
+        trackThickness: 20,
+        progressThickness: 20,
+        role: "Info",
+        //load: progressLoad,
+        labelStyle: {
+          textAlignment: "Center",
+          color: "#ffffff",
+        },
+        textRender: showOutputTokens,
+        animation: {
+          enable: true,
+          duration: 2000,
+          delay: 0,
+        },
+      });
+      outputTokensProgress.appendTo("#outputTokens");
+      inputTokensProgress.value = inputTokens;
+      outputTokensProgress.value = outputTokens;
+      function showInputTokens(args) {
+        args.text = String(inputTokens);
+      }
+      function showOutputTokens(args) {
+        args.text = String(outputTokens);
+      }
+    }
+    var appDetails = [
+      {
+        ID: 1,
+        Title: "Landing",
+        Content:
+          "The doctor has an cloud powered web app deployable on any cloud Azure, GCP, AWS, Kubernetees, and also local machine - Windows or linux  where you can access the data of patients, their medical records, video/ audio conversations and X-rays",
+        ImgPath: "static/CDN/carousel/1Landing.png",
+      },
+      {
+        ID: 2,
+        Title: "Workspace",
+        Content:
+          "The doctor has access to all the patients data and can select a patient and all the associated records",
+        ImgPath: "static/CDN/carousel/2Workspace.png",
+      },
+      {
+        ID: 3,
+        Title: "Summary",
+        Content:
+          "Panacea parses and analyses all the medical records inclusing audio, vidoe, handwritten notes and provides a simple summary of the patient configurable in 50, 100, 200 words etc. ",
+        ImgPath: "static/CDN/carousel/3Summary.png",
+      },
+      {
+        ID: 4,
+        Title: "Emotion",
+        Content:
+          "Panacea provides a glimpse of the overall emotional quotient of the patient as happy, sad, fear etc, so that the doctor can prepare the patient",
+        ImgPath: "static/CDN/carousel/4Emotion.png",
+      },
+      {
+        ID: 5,
+        Title: "Sentiment",
+        Content:
+          "Panacea provides an overall sentinment analysis and categories as as positive, negative. This can help doctors tailor their converstaion to address these concerns and improve patient preparedness for treatment.",
+        ImgPath: "static/CDN/carousel/5Sentiment.png",
+      },
+      {
+        ID: 6,
+        Title: "Tone",
+        Content:
+          "Panacea analyses the tone of the patient and categories as harsh, formal, etc so that the doctor can be well prepared for a productive conversation",
+        ImgPath: "static/CDN/carousel/6Tone.png",
+      },
+      {
+        ID: 7,
+        Title: "Patient Files",
+        Content:
+          "Panacea shows all the patients record in folder like structure and the doctor can view the file or a simple summary. for example pernersia can analyse an MRI or Xray also and provide a summary",
+        ImgPath: "static/CDN/carousel/7grid.png",
+      },
+      {
+        ID: 8,
+        Title: "Query",
+        Content:
+          "Panacea can help a doctor probe a particular observation in a video or in a speech file or in a PDF file",
+        ImgPath: "static/CDN/carousel/8query.png",
+      },
+      {
+        ID: 9,
+        Title: "Timeline",
+        Content:
+          "Panacea organises all the medical records and  put it in a timeline view",
+        ImgPath: "static/CDN/carousel/9Timeline.png",
+      },
+      {
+        ID: 10,
+        Title: "Entities",
+        Content:
+          "Panacea has entity recoginisaton/intutions which means it can find all the treatemtns, medicines used, hospitals visited , doctors consulted etc this helps the doctor with the frequencies",
+        ImgPath: "static/CDN/carousel/10ner.png",
+      },
+    ];
+
+    function loadCarousel() {
+      var carouselObj = new ej.navigations.Carousel({
+        animationEffect: "Fade",
+        cssClass: "db-carousel",
+        dataSource: appDetails,
+        itemTemplate: "#productTemplate",
+        showIndicators: false,
+        autoPlay: true,
+      });
+      carouselObj.appendTo("#carousel");
+      $("#carouselBtn").click();
+    }
+
+    document.addEventListener("DOMContentLoaded", (_) => {
+      let elementsFull = document.getElementsByClassName("loginUserFullName");
+      Array.from(elementsFull).forEach((ele) => {
+        ele.innerText = localStorage.getItem("FullName");
+      });
+      loadWsp();
+    });
+    function loadPatients() {
+      document.getElementById("cardSampleRow").innerHTML = "";
+
+      $("#domainiden")[0].style.display = "";
+      var cardTemplateFn = ej.base.compile(
+        document.getElementById("card_template").innerHTML.trim()
+      );
+      var card;
+      var cardEle;
+      var cardObj = [];
+      var data = [];
+      var searchData = [];
+      var searchValCount = 0;
+      var emptyData = true;
+      let paramsObj = {};
+      paramsObj.userName = userName;
+      paramsObj.wspName = currentWsp;
+      let url = "/get_patient_folders?dbParams=" + JSON.stringify(paramsObj);
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          data.forEach((fol) => {
+            if (fol.name.includes(".") == false) {
+              let cardObjEle = {
+                header_title: fol.name,
+                // "header_subtitle": fol.name,
+                cardImage: {
+                  url:
+                    "static/CDN/images/" + fol.name.replace(" ", "") + ".jpeg",
+                },
+                cardContent: "Age : 21",
+                // card_action_btn: {
+                //   action_btns: [
+                //     {
+                //       tag: "button",
+                //       class: "patientSelectCardBtn",
+                //       text: "Select",
+                //     },
+                //   ],
+                //   isVertical: true,
+                // },
+                isHorizontal: false,
+              };
+              cardObj.push(cardObjEle);
+            }
+          });
+          cardRendering(cardObj);
+          $("#patientSelectBtn").click();
+          // const driverObjLocal = driver({
+          //   showProgress: true,
+          //   steps: [
+          //     {
+          //       element: ".e-card",
+          //       popover: {
+          //         title: "Open Text Content Storage",
+          //         description:
+          //           "Here we are leveraging Open Text Content Storage V3 to store and fetch patient information",
+          //         side: "bottom",
+          //         align: "start",
+          //       },
+          //     },
+          //     {
+          //       element: "#domainiden",
+          //       popover: {
+          //         title: "Click here to load patient data",
+          //         description:
+          //           "Here we are leveraging Open Text Content Capture",
+          //         side: "bottom",
+          //         align: "start",
+          //       },
+          //     },
+          //   ],
+          // });
+
+          // driverObjLocal.drive();
+          // var driverObj = driver({
+          //   onDestroyed: () => {
+          //     console.log("destroy hit done");
+          //     var driverObj = driver();
+          //     driverObj.highlight({
+          //       element: "#domainiden",
+          //       popover: {
+          //         title: "Click here to load patient data",
+          //         description:
+          //           "Here we are leveraging Open Text Content Capture",
+          //         side: "left",
+          //         align: "start",
+          //       },
+          //     });
+          //   },
+          // });
+          var driverObj = driver();
+          driverObj.highlight({
+            element: "#logocontent",
+            popover: {
+              title: "Open Text Content Storage",
+              description:
+                "Panacea leverages OpenText Content Storage V3 api to store all patient data like Prescriptions, Medical Records, Video/Phone consultations, X-Ray/MRI images securely",
+              side: "bottom",
+              align: "start",
+            },
+          });
+          $(".driver-popover")[0].style.inset = "auto auto 256px 300px";
+          $(".driver-popover-arrow").removeClass(
+            "driver-popover-arrow-side-right driver-popover-arrow-align-start"
+          );
+          $(".driver-popover-arrow").addClass(
+            "driver-popover-arrow-side-top driver-popover-arrow-align-center"
+          );
+
+          // destroyAllCard();
+        });
+      function cardRendering(cardObj) {
+        var errorContent = document.querySelector(".tile_layout .row.error");
+        let selectedCardId = "";
+        if (cardObj.length > 0) {
+          errorContent.style.display = "none";
+          cardParentTemplate = `<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6" style="display:inline-block"><div id="card_sample_index" class="card_sample" data-path="patientFolder" onclick="highlightPatient(this)">child</div></div>`;
+          cardObj.forEach(function (data, index) {
+            card = cardTemplateFn(data);
+            let cardParentId = "card_sample_" + ++index;
+            if (data.header_title == selectedPatient) {
+              selectedCardId = cardParentId;
+            }
+            cardParentEle = cardParentTemplate
+              .replace("card_sample_index", cardParentId)
+              .replace("patientFolder", data.header_title);
+            cardParentEle = cardParentEle.replace("child", card[0].outerHTML);
+            document
+              .getElementById("cardSampleRow")
+              .insertAdjacentHTML("beforeend", cardParentEle);
+
+            // if (cardEle) {
+            //   cardEle.appendChild(card[0]);
+            // }
+          });
+          if (selectedCardId != "") {
+            document.getElementById(
+              selectedCardId
+            ).parentElement.style.backgroundColor = "green";
+          }
+        } else {
+          errorContent.style.display = "flex";
+        }
+      }
+      function destroyAllCard() {
+        document.getElementById("cardSampleRow").innerHTML = "";
+      }
+      function searchFilter(key) {
+        searchValCount = key.length;
+        var predicate = new ej.data.Predicate(
+          "header_title",
+          "Contains",
+          key,
+          true
+        );
+        predicate = predicate
+          .or("cardImage.title", "Contains", key, true)
+          .or("header_title", "Contains", key, true)
+          .or("header_subtitle", "Contains", key, true);
+        var cardDa = cardObj;
+        searchData = data = new ej.data.DataManager(cardDa).executeLocal(
+          new ej.data.Query().where(predicate)
+        );
+        destroyAllCard();
+        cardRendering(data);
+      }
+      document.getElementById("search_Card").onkeyup = function (e) {
+        if (
+          e.code === "Tab" ||
+          e.code === "Escape" ||
+          e.code === "ShiftLeft" ||
+          (e.code === "Backspace" && emptyData)
+        ) {
+          return;
+        }
+        var inputVal = e.target.value;
+        /*jshint -W030 */
+        inputVal.length === 0 ? (emptyData = true) : (emptyData = false);
+        searchFilter(inputVal);
+      };
+    }
+
+    function highlightPatient(args) {
+      document.querySelectorAll(".card_sample").forEach((ec) => {
+        ec.parentElement.style.backgroundColor = "unset";
+      });
+      args.parentElement.style.backgroundColor = "green";
+      selectedPatient = args.getAttribute("data-path");
+      localStorage.setItem("SelectedPatient", selectedPatient);
+      $("#domainPart")[0].style.display = "none";
+      $("#domainiden").html("Prepare Patient data for Diagnosis");
+      var driverObj = driver();
+      driverObj.highlight({
+        element: "#domainiden",
+        popover: {
+          title: "Click here to load patient data",
+          description:
+            "Here we are leveraging Open Text Content Capture to extract text from patient reports, prescription etc.,",
+          side: "left",
+          align: "start",
+        },
+      });
+    }
+    var aiFilePath = "";
+    var userName = localStorage.getItem("UserName");
+    // var currentWsp = localStorage.getItem("CurrentWsp");
+    var patientsList = [];
+    var ptcarouselObj = null;
+    $("#nextBtn").click(function () {
+      ptcarouselObj.next();
+    });
+    $("#prevBtn").click(function () {
+      ptcarouselObj.prev();
+    });
+    function GetPatientFiles() {
+      let paramsObj = {};
+      paramsObj.userName = userName;
+      paramsObj.wspName = currentWsp;
+      paramsObj.selectedPatient = selectedPatient;
+      let url = "/get_patient_files_info?dbParams=" + JSON.stringify(paramsObj);
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          patientsList = data.sort((a, b) =>
+            a.FileName.localeCompare(b.FileName)
+          );
+          // ptcarouselObj.dataSource = patientsList;
+          ptcarouselObj = new ej.navigations.Carousel({
+            animationEffect: "Fade",
+            cssClass: "ptdb-carousel",
+            dataSource: patientsList,
+            itemTemplate: "#patientTemplate",
+            showIndicators: false,
+            autoPlay: false,
+          });
+          ptcarouselObj.appendTo("#ptcarousel");
+          data.forEach((e) => {
+            let summary = converter.makeHtml(e.Summary);
+            document.getElementById("Summary_" + e.ID).innerHTML = summary;
+
+            if (e.FileName.includes(".pdf")) {
+              let tabObj = new ej.navigations.Tab({
+                items: [
+                  {
+                    header: { text: "Query" },
+                    content: "#SubTab_" + e.ID + "_1",
+                  },
+                  {
+                    header: { text: "RiskGuard" },
+                    content: "#SubTab_" + e.ID + "_2",
+                  },
+                ],
+              });
+              tabObj.appendTo("#Tab_" + e.ID);
+            } else {
+              let tabObj = new ej.navigations.Tab({
+                items: [
+                  {
+                    header: { text: "Query" },
+                    content: "#SubTab_" + e.ID + "_1",
+                  },
+                ],
+              });
+              tabObj.appendTo("#Tab_" + e.ID);
+            }
+          });
+        });
+
+      $("#viewPtFilesBtn").click();
+    }
+    var fit_json = "";
+    function GetFitData() {
+      let url = "/get_google_fit_data";
+      fetch(url)
+        .then((response) => response.json())
+        .then((result) => {
+          $("#geminifitgif")[0].style.display = "none";
+          let data = {};
+          data.Heartpoints = JSON.parse(
+            result.heart_json.match(/\{([^]+)\}/g)[0]
+          )["Heartpoints"];
+          data.StepCount = JSON.parse(
+            result.steps_json.match(/\{([^]+)\}/g)[0]
+          )["Steps"];
+          data.CaloriesBurned = JSON.parse(
+            result.calories_json.match(/\{([^]+)\}/g)[0]
+          )["CaloriesBurned"];
+
+          let heartData = [];
+          data.Heartpoints.forEach((p) => {
+            let hp = {};
+            var date = new Date(p.date);
+            hp.date = date.getTime();
+            hp.value = p.value;
+            heartData.push(hp);
+          });
+          let calData = [];
+          data.CaloriesBurned.forEach((p) => {
+            let hp = {};
+            var date = new Date(p.date);
+            hp.date = date.getTime();
+            hp.value = p.value;
+            calData.push(hp);
+          });
+          let gaugeData = [
+            data.Heartpoints[data.Heartpoints.length - 1],
+            data.StepCount[data.StepCount.length - 1],
+            data.CaloriesBurned[data.CaloriesBurned.length - 1],
+          ];
+
+          renderHeartPointsChart("heartpointsChart", heartData);
+          renderStepCountChart("stepcountChart", data.StepCount);
+          renderCaloriesChart("caloriesChart", calData);
+          fit_json = JSON.stringify({
+            HeartPoints: heartData,
+            StepCount: data.StepCount,
+            CaloriesBurned: calData,
+          });
+          // renderGuageChart("guageChart", gaugeData);
+        });
+
+      $("#getFitDataBtn").click();
+      $("#geminifitgif")[0].style.display = "block";
+      $("#explainfitload")[0].style.display = "none";
+    }
+    function runRiskGuard(args) {
+      let id = args.getAttribute("data-id");
+      document.getElementById("riskGuardBtn_" + id).style.display = "none";
+      document.getElementById("riskGuardBtnLoading_" + id).style.display =
+        "block";
+      let reqPt = patientsList.filter((x) => x.ID == id)[0];
+      let paramsObj = {};
+      paramsObj.selectedFile = reqPt.FilePath;
+      paramsObj.userName = userName;
+      paramsObj.wspName = currentWsp;
+      let url = "/get_file_risk_guard?dbParams=" + JSON.stringify(paramsObj);
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          let risks =
+            data["riskExtraction"]["results"]["tme"]["result"]["results"][
+              "nfinder"
+            ][0]["nfExtract"][0]["extractedTerm"];
+
+          let risk_results = [];
+          risks.forEach((x) => {
+            if (x.id !== null) {
+              let yd = {};
+              yd.CatridgeID = x.cartridgeID;
+              yd.MainTerm = x.mainTerm.value;
+              yd.RelevancyScore = x.relevancyScore;
+              yd.Frequency = x.frequency;
+              risk_results.push(yd);
+            }
+          });
+          var grid = new ej.grids.Grid({
+            dataSource: risk_results,
+            allowSorting: true,
+            allowFiltering: true,
+            filterSettings: { type: "Excel" },
+            columns: [
+              {
+                field: "CatridgeID",
+                headerText: "Catridge ID",
+                width: 80,
+                clipMode: "EllipsisWithTooltip",
+              },
+              {
+                field: "MainTerm",
+                headerText: "Main Term",
+                width: 160,
+                clipMode: "EllipsisWithTooltip",
+              },
+              {
+                field: "RelevancyScore",
+                headerText: "Relevancy Score",
+                clipMode: "EllipsisWithTooltip",
+              },
+              {
+                field: "Frequency",
+                headerText: "Frequency",
+                clipMode: "EllipsisWithTooltip",
+              },
+            ],
+          });
+          grid.appendTo("#riskGuardAnswer_" + id);
+          document.getElementById("riskGuardBtn_" + id).style.display = "block";
+          document.getElementById("riskGuardBtnLoading_" + id).style.display =
+            "none";
+        });
+    }
+
+    function getResponse(args) {
+      let id = args.getAttribute("data-id");
+      document.getElementById("queryDoc_" + id).style.display = "none";
+      document.getElementById("queryDocLoading_" + id).style.display = "block";
+      let reqPt = patientsList.filter((x) => x.ID == id)[0];
+      let userQuery = document.getElementById("userQuery_" + id).value;
+      // Swal.fire({ title: "fetching response..please wait" });
+      // Swal.showLoading();
+      // setTimeout(async () => {
+      let paramsObj = {};
+      paramsObj.selectedFile = reqPt.FilePath;
+      paramsObj.userQuery = userQuery;
+      let url = "/gemini_query_file?dbParams=" + JSON.stringify(paramsObj);
+      fetch(url)
+        .then((response) => response.text())
+        .then((data) => {
+          // Swal.close();
+          let reviewTxt = converter.makeHtml(data);
+          $("#fileQueryAnswer_" + id)[0].innerHTML = reviewTxt;
+          document.getElementById("queryDoc_" + id).style.display = "block";
+          document.getElementById("queryDocLoading_" + id).style.display =
+            "none";
+        });
+      // }, 100);
+    }
+
+    var converter = new showdown.Converter({ extensions: ["table"] });
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    var selectedDomain = "";
+    let summaryObj = null;
+    // let selectedFilesForLLM = [];
+
+    let selectedFolder = "";
+
+    var ptData = [];
+
+    function loadWsp() {
+      loadPatients();
+    }
+    function IdentifyDomain() {
+      setTimeout(async () => {
+        let paramsObj = {};
+        paramsObj.selectedPatient = selectedPatient;
+        paramsObj.userName = userName;
+        paramsObj.wspName = currentWsp;
+        let url =
+          "/find_medical_department?dbParams=" + JSON.stringify(paramsObj);
+        fetch(url)
+          .then((response) => response.text())
+          .then(async (data) => {
+            // $("#ptDomain")[0].innerText = data.Domain;
+            let deptData = JSON.parse(data.match(/\{([^]+)\}/g)[0]);
+            $("#ptDomainName")[0].innerText = deptData.Department;
+            selectedDomain = deptData.Department;
+            $("#ptSrchFace")[0].src = "static/CDN/images/clinical-domain.png";
+            $("#domainPart")[0].style.display = "";
+            // $("#domainiden").html("Analyse with Panacea");
+            Swal.close();
+            await sleep(3000);
+            $("#patientSelectModal").modal("toggle");
+            var driverObj = driver();
+            driverObj.highlight({
+              element: "#submit",
+              popover: {
+                title: "Get insights",
+                description: "Click button to fetch insights",
+                side: "bottom",
+                align: "start",
+              },
+            });
+          });
+        let stages = 6;
+        let stagesData = [
+          "Extracting Patient Data <br/>",
+          "Invoking <b>Open Text Core Capture service</b> to extract text from PDFs including Patient Reports, Prescriptions etc.,",
+          "Converting multi-language to english with Gemini AI",
+          "Normalizing and summarizing Patient information with Gemini AI",
+          "Creating vector database using Google Generative AI embeddings",
+          "Diagnosing and Recommending general treatment with Patient extracted symptoms",
+        ];
+        let updatedHtml = `<li>${stagesData[0]}</li>`;
+
+        Swal.fire({
+          html: `<div class="row" style="text-align:left;font-size:15px;"><div class="col-md-1"><img src="static/CDN/images/Google_Bard_animated.gif" style="width:32px"/></div><div class="col-md-11"><ol type="1" style="margin-left:-14px">${updatedHtml}</ol></div></div>`,
+          showConfirmButton: false,
+          allowOutsideClick: false,
+        });
+        await sleep(3000);
+
+        for (let i = 1; i < stages; i++) {
+          // Swal.close();
+          updatedHtml += `<li>${stagesData[i]}</li>`;
+          Swal.update({
+            html: `<div class="row" style="text-align:left;font-size:15px;"><div class="col-md-1"><img src="static/CDN/images/Google_Bard_animated.gif" style="width:32px"/></div><div class="col-md-11"><ol type="1" style="margin-left:-14px">${updatedHtml}</ol></div></div>`,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+          });
+          // Swal.showLoading();
+          await sleep(3000);
+        }
+      }, 500);
+    }
+    function getFilesListIterative(filesList) {
+      let files = [];
+      filesList.forEach((f) => {
+        // if (f.name.endsWith(".pdf")) {
+        let fileLocal = {};
+        fileLocal.name = f.name;
+        fileLocal.absPath = f.absPath.replace("\\", "/");
+        files.push(fileLocal);
+        // }
+      });
+      return files;
+    }
+    // function getFilesListIterative(fileObj) {
+
+    //   let files = [];
+    //   if (fileObj.type == "Folder") {
+    //     fileObj.children.forEach(c => {
+    //       let nestedFiles = getFilesListIterative(c);
+    //       files.push(...nestedFiles);
+    //     })
+    //   }
+    //   else {
+    //     let fileLocal = {};
+    //     fileLocal.name = fileObj.name;
+    //     fileLocal.absPath = fileObj.absPath.replace("\\", "/");
+    //     files.push(fileLocal);
+    //   }
+    //   return files;
+    // }
+
+    function generateTimeline(timelineData) {
+      $("#timelineView").html("");
+      for (let i = 0; i < timelineData.length; i++) {
+        tObj = timelineData[i];
+        let tClass = "left";
+        let tIcon = "";
+        if (tObj["Event Type"] == "Visit") tIcon = "docvisit.jpeg";
+        else if (tObj["Event Type"].includes("Lab")) tIcon = "diagnosis.png";
+        else if (tObj["Event Type"].includes("Medication"))
+          tIcon = "medicine.jpeg";
+        else if (tObj["Event Type"] == "Surgery") tIcon = "surgery.jpeg";
+        else tIcon = "docvisit.jpeg";
+        if (i % 2 == 0) tClass = "left";
+        else tClass = "right";
+        let substr = tObj["Event Description"].substr(0, 40);
+        // console.log(substr);
+        let tooltip_html = converter.makeHtml(tObj["Event Description"]);
+        let tHtml = `<div class="tcontainer ${tClass}">
+                        <div class="date">${tObj["Time"]}</div>
+                        <img class="icon" src="static/CDN/images/${tIcon}"></img>
+                        <div class="content">
+                          <h2>${tObj["Event Type"]}</h2>
+                          <div class="ctooltip">
+                            ${substr}<span class="ctooltiptext">${tooltip_html}</span>
+                          </div>
+                        </div>
+                      </div>`;
+        $("#timelineView").append(tHtml);
+      }
+    }
+    var timelineHtml;
+    // initialize AutoComplete component
+
+    function highlight(
+      elem,
+      keywords,
+      caseSensitive = false,
+      cls = "highlight"
+    ) {
+      const flags = caseSensitive ? "g" : "gi";
+      // Sort longer matches first to avoid
+      // highlighting keywords within keywords.
+      keywords.sort((a, b) => b.length - a.length);
+      Array.from(elem.childNodes).forEach((child) => {
+        ///let rexp =;
+        //console.log(rexp);
+        const keywordRegex = RegExp(keywords.join("|"), flags);
+        console.log(keywordRegex);
+        if (child.nodeType !== 3) {
+          // not a text node
+          highlight(child, keywords, caseSensitive, cls);
+        } else if (keywordRegex.test(child.textContent)) {
+          const frag = document.createDocumentFragment();
+          let lastIdx = 0;
+          child.textContent.replace(keywordRegex, (match, idx) => {
+            const part = document.createTextNode(
+              child.textContent.slice(lastIdx, idx)
+            );
+            const highlighted = document.createElement("span");
+            highlighted.textContent = match;
+            highlighted.classList.add(cls);
+            frag.appendChild(part);
+            frag.appendChild(highlighted);
+            lastIdx = idx + match.length;
+          });
+          const end = document.createTextNode(child.textContent.slice(lastIdx));
+          frag.appendChild(end);
+          child.parentNode.replaceChild(frag, child);
+        }
+      });
+    }
+
+    function explainFitData() {
+      $("#explainfitload")[0].style.display = "";
+      let paramsObj = {};
+      paramsObj.fitJson = fit_json;
+      let url = "/explain_fit_data?dbParams=" + JSON.stringify(paramsObj);
+      fetch(url)
+        .then((response) => response.text())
+        .then((data) => {
+          let summary_html = converter.makeHtml(data.trim());
+          $("#explainfitans")[0].innerHTML = summary_html;
+        });
+    }
+    function getSummary() {
+      Swal.fire({ title: "getting insights..please wait" });
+      Swal.showLoading();
+      setTimeout(() => {
+        // $("#timelineinfo")[0].style.display = "none";
+        $("#ptSummary")[0].innerText = "";
+        let paramsObj = {};
+        paramsObj.selectedPatient = selectedPatient;
+        paramsObj.domainName = selectedDomain;
+        paramsObj.userName = userName;
+        paramsObj.wspName = currentWsp;
+        let url = "/gemini_results?dbParams=" + JSON.stringify(paramsObj);
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            summaryObj = data;
+            inputTokens = summaryObj.InputTokens;
+            outputTokens = summaryObj.OutputTokens;
+            // renderTokens();
+            summaryObj.Emotion = JSON.parse(
+              data.Emotion.match(/\{([^]+)\}/g)[0]
+            ).Emotion;
+            summaryObj.EmotionWords = JSON.parse(
+              data.EmotionWords.match(/\{([^]+)\}/g)[0]
+            ).EmotionWords;
+            summaryObj.Tone = JSON.parse(
+              data.Tone.match(/\{([^]+)\}/g)[0]
+            ).Tone;
+            summaryObj.ToneWords = JSON.parse(
+              data.ToneWords.match(/\{([^]+)\}/g)[0]
+            ).ToneWords;
+            summaryObj.Sentiment = JSON.parse(
+              data.Sentiment.match(/\{([^]+)\}/g)[0]
+            ).Sentiment;
+            summaryObj.SentimentWords = JSON.parse(
+              data.SentimentWords.match(/\{([^]+)\}/g)[0]
+            ).SentimentWords;
+            summaryObj.EnglishMaturity = JSON.parse(
+              data.EnglishMaturity.match(/\{([^]+)\}/g)[0]
+            ).EnglishMaturity;
+            summaryObj.EngMatWords = JSON.parse(
+              data.EngMatWords.match(/\{([^]+)\}/g)[0]
+            ).EngMatWords;
+            console.log(data);
+            let summary_html = converter.makeHtml(data.Summary.trim());
+            $("#ptSummary")[0].innerHTML = summary_html;
+            // $("#timelineLink")[0].style.display = "";
+            $("#ptFiles")[0].style.display = "";
+            $("#ptTimeline")[0].style.display = "";
+            $("#ptPrescriptions")[0].style.display = "";
+            var separators = ["\\n", "\\s"];
+            var escChar = ["\/", "\+", "\?", "\?", "\(", "\)"];
+
+            // console.log("NER", data.NER);
+
+            Swal.close();
+            var neutralKeywords = [
+              "Happiness",
+              "Neutral",
+              "FORMAL",
+              "PROFICIENT",
+            ];
+            var aiHtml = "";
+            var abnormalArray = [];
+            var normalArray = [];
+            var usualArray = [
+              "Emotion",
+              "Sentiment",
+              "Tone",
+              "EnglishMaturity",
+            ];
+            usualArray.forEach((el) => {
+              if (neutralKeywords.includes(data[el])) normalArray.push(el);
+              else abnormalArray.push(el);
+            });
+            abnormalArray.push(...normalArray);
+            abnormalArray.forEach((el) => {
+              // let anchorHtml = `<b>${el} : </b><a>${data[el]}</a>`;
+              let anchorHtml = `<div class="row"><div class="col-md-5"><b style="width:fit-content">${el}</b></div><div class="col-md-1"><b>:</b></div><div class="col-md-6"><button type="button" class="btn btn-link aibtn"
+                      style="width: 160px;text-align: left;font-size: 14px;margin-top:-10px" onclick="openSummaryHighlight(this)" title="${el}">${data[
+                el
+              ].toUpperCase()} </button></div></div>`;
+              aiHtml += anchorHtml;
+            });
+            $("#aiHighlights").html(aiHtml);
+            var driverObj = driver({
+              showProgress: true,
+              steps: [
+                {
+                  element: "#ptFiles",
+                  popover: {
+                    title: "Open Text Risk Guard",
+                    description:
+                      "Click here to view and query Patient records. Here we are leveraging Open Text Risk Guard service to identify risks like email, phone number etc..",
+                    side: "left",
+                    align: "start",
+                  },
+                },
+                {
+                  element: "#ptTimeline",
+                  popover: {
+                    title: "Patient Timeline",
+                    description: "Clcik here to view Patient Timeline",
+                    side: "left",
+                    align: "start",
+                  },
+                },
+                {
+                  element: "#ptPrescriptions",
+                  popover: {
+                    title: "Open Text Core Signature",
+                    description:
+                      "Click here to view list of Patient Prescriptions. Here we are leveraging Open Text Core Signature service for a doctor to electronically sign the prescription",
+                    side: "left",
+                    align: "start",
+                  },
+                },
+              ],
+            });
+            driverObj.drive();
+          });
+      }, 100);
+    }
+    function openSummaryHighlight(e) {
+      $("#highlightSummary")[0].innerText = summaryObj.completeReport;
+      let reviewTxt = "";
+      let keywords = [];
+      var separators = ["-", "\\n", "\\*"];
+      let imgReq = "";
+      if (e.title.includes("Emotion")) {
+        if (summaryObj.Emotion == "Happiness") imgReq = "happiness.jpeg";
+        else if (summaryObj.Emotion == "Disgust") imgReq = "disgust.png";
+        else if (summaryObj.Emotion == "Anger") imgReq = "anger.jpeg";
+        else if (summaryObj.Emotion == "Fear") imgReq = "fear.png";
+        else if (summaryObj.Emotion == "Surprise") imgReq = "surprise.j[g]";
+        else imgReq = "sadness.png";
+        reviewTxt = `<span><img src="static/CDN/images/${imgReq}" style="width:80px;height:80px;" /><span style="font-size:20px"> Overall emotion is <span style="background-color:yellow"><b>${summaryObj.Emotion.toUpperCase()}</b></span></span></span>`;
+        // keywords = summaryObj.EmotionWords.split(
+        //   new RegExp(separators.join("|"), "g")
+        // ).filter((x) => x.length > 2);
+        keywords = summaryObj.EmotionWords;
+        $("#highlightLabel").html("Analysing emotion");
+      } else if (e.title.includes("Sentiment")) {
+        if (summaryObj.Sentiment == "Positive") imgReq = "Positive.png";
+        else if (summaryObj.Sentiment == "Negative") imgReq = "Negative.png";
+        else imgReq = "Neutral.png";
+        reviewTxt = `<span><img src="static/CDN/images/${imgReq}" style="width:80px;height:80px;" /><span style="font-size:20px"> Overall sentiment is <span style="background-color:yellow"><b>${summaryObj.Sentiment.toUpperCase()}</b></span></span></span>`;
+        // keywords = summaryObj.SentimentWords.split(
+        //   new RegExp(separators.join("|"), "g")
+        // ).filter((x) => x.length > 2);
+        keywords = summaryObj.SentimentWords;
+        $("#highlightLabel").html("Analysing sentiment");
+      } else if (e.title.includes("Tone")) {
+        reviewTxt = `<span><span style="font-size:20px">Overall Tone is <span style="background-color:yellow"><b>${summaryObj.Tone.toUpperCase()}</b></span></span></span>`;
+        // keywords = summaryObj.ToneWords.split(
+        //   new RegExp(separators.join("|"), "g")
+        // ).filter((x) => x.length > 2);
+        keywords = summaryObj.ToneWords;
+        $("#highlightLabel").html("Analysing tone");
+      } else if (e.title.includes("EnglishMaturity")) {
+        if (summaryObj.EnglishMaturity.toUpperCase() == "AVERAGE")
+          imgReq = "Average.png";
+        else if (summaryObj.EnglishMaturity.toUpperCase() == "MEDIUM")
+          imgReq = "Medium.png";
+        else if (summaryObj.EnglishMaturity.toUpperCase() == "LOW")
+          imgReq = "low.png";
+        else imgReq = "Proficient.png";
+        reviewTxt = `<span><img src="static/CDN/images/${imgReq}" style="width:200px;height:50px;" /><span style="font-size:20px"> Overall level of English Maturity is <span style="background-color:yellow"><b>${summaryObj.EnglishMaturity.toUpperCase()}</b></span></span></span>`;
+        // keywords = summaryObj.EngMatWords.split(
+        //   new RegExp(separators.join("|"), "g")
+        // ).filter((x) => x.length > 2);
+        keywords = summaryObj.EngMatWords;
+        $("#highlightLabel").html("Analysing english maturity");
+      }
+      $("#finalReview")[0].innerHTML = reviewTxt;
+      keywords = keywords.map((x) => {
+        return x.trim(" ");
+      });
+      highlight(document.getElementById("highlightSummary"), keywords);
+      $("#highlightBtn").click();
+    }
+
+    // function viewEntityReport() {
+    //   let reportName = selectedFilesForLLM[0].absPath;
+    //   $(
+    //     "#pdfViewer"
+    //   )[0].src = `../Workspace/${currentUser}/${currentWsp}/DataFiles/${reportName}`;
+    //   $("#pdfViewerBtn").click();
+    // }
+
+    $("#textRead").click(function () {
+      debugger;
+      $("#speechMenu").show();
+      $("#textRead").hide();
+      var msg = new SpeechSynthesisUtterance();
+      msg.text = $("#ptSummary")[0].innerText;
+      // var voices = window.speechSynthesis.getVoices();
+      // msg.voice = voices[10];
+      window.speechSynthesis.speak(msg);
+    });
+    function pause() {}
+
+    function stop() {
+      speechSynthesis.cancel();
+    }
+    function resume() {
+      speechSynthesis.resume();
+    }
+
+    function renderHeartPointsChart(element, chartdata) {
+      am5.ready(function () {
+        // Create root element
+        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+        var root = am5.Root.new(element);
+
+        const myTheme = am5.Theme.new(root);
+
+        myTheme.rule("AxisLabel", ["minor"]).setAll({
+          dy: 1,
+        });
+
+        // Set themes
+        // https://www.amcharts.com/docs/v5/concepts/themes/
+        root.setThemes([
+          am5themes_Animated.new(root),
+          myTheme,
+          am5themes_Responsive.new(root),
+        ]);
+
+        // Create chart
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/
+        var chart = root.container.children.push(
+          am5xy.XYChart.new(root, {
+            panX: false,
+            panY: false,
+            wheelX: "panX",
+            wheelY: "zoomX",
+            paddingLeft: 0,
+          })
+        );
+
+        // Add cursor
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+        var cursor = chart.set(
+          "cursor",
+          am5xy.XYCursor.new(root, {
+            behavior: "zoomX",
+          })
+        );
+        cursor.lineY.set("visible", false);
+
+        var date = new Date();
+        date.setHours(0, 0, 0, 0);
+        var value = 100;
+
+        function generateData() {
+          value = Math.round(Math.random() * 10 - 5 + value);
+          am5.time.add(date, "day", 1);
+          return {
+            date: date.getTime(),
+            value: value,
+          };
+        }
+
+        function generateDatas(count) {
+          var data = [];
+          for (var i = 0; i < count; ++i) {
+            data.push(generateData());
+          }
+          return data;
+        }
+
+        // Create axes
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+        var xAxis = chart.xAxes.push(
+          am5xy.DateAxis.new(root, {
+            maxDeviation: 0,
+            baseInterval: {
+              timeUnit: "day",
+              count: 1,
+            },
+            renderer: am5xy.AxisRendererX.new(root, {
+              minorGridEnabled: true,
+              minorLabelsEnabled: true,
+            }),
+            tooltip: am5.Tooltip.new(root, {}),
+          })
+        );
+
+        xAxis.set("minorDateFormats", {
+          day: "dd",
+          month: "MM",
+        });
+
+        var yAxis = chart.yAxes.push(
+          am5xy.ValueAxis.new(root, {
+            renderer: am5xy.AxisRendererY.new(root, {}),
+          })
+        );
+        let xRenderer = xAxis.get("renderer");
+        xRenderer.labels.template.setAll({
+          // fill: am5.color(0xff0000),
+          fontSize: "0.6em",
+        });
+        let yRenderer = yAxis.get("renderer");
+        yRenderer.labels.template.setAll({
+          // fill: am5.color(0xff0000),
+          fontSize: "0.6em",
+        });
+        // Add series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+        var series = chart.series.push(
+          am5xy.ColumnSeries.new(root, {
+            name: "Series",
+            xAxis: xAxis,
+            yAxis: yAxis,
+            valueYField: "value",
+            valueXField: "date",
+            adjustBulletPosition: false,
+            tooltip: am5.Tooltip.new(root, {
+              labelText: "{valueY}",
+            }),
+          })
+        );
+
+        series.columns.template.setAll({ strokeOpacity: 0, width: 0.5 });
+        series.bullets.push(function () {
+          return am5.Bullet.new(root, {
+            locationY: 1,
+            sprite: am5.Circle.new(root, {
+              radius: 3,
+              fill: series.get("fill"),
+            }),
+          });
+        });
+        // Add scrollbar
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+        // chart.set(
+        //   "scrollbarX",
+        //   am5.Scrollbar.new(root, {
+        //     orientation: "horizontal",
+        //   })
+        // );
+
+        var data = chartdata;
+        series.data.setAll(data);
+
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
+        series.appear(1000);
+        chart.appear(1000, 100);
+      });
+    }
+
+    function renderCaloriesChart(element, chartdata) {
+      am5.ready(function () {
+        // Create root element
+        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+        var root = am5.Root.new(element);
+
+        const myTheme = am5.Theme.new(root);
+
+        myTheme.rule("AxisLabel", ["minor"]).setAll({
+          dy: 1,
+        });
+
+        // Set themes
+        // https://www.amcharts.com/docs/v5/concepts/themes/
+        root.setThemes([
+          am5themes_Animated.new(root),
+          myTheme,
+          am5themes_Responsive.new(root),
+        ]);
+
+        // Create chart
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/
+        var chart = root.container.children.push(
+          am5xy.XYChart.new(root, {
+            panX: false,
+            panY: false,
+            wheelX: "panX",
+            wheelY: "zoomX",
+            paddingLeft: 0,
+          })
+        );
+
+        // Add cursor
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+        var cursor = chart.set(
+          "cursor",
+          am5xy.XYCursor.new(root, {
+            behavior: "zoomX",
+          })
+        );
+        cursor.lineY.set("visible", false);
+
+        var date = new Date();
+        date.setHours(0, 0, 0, 0);
+        var value = 100;
+
+        function generateData() {
+          value = Math.round(Math.random() * 10 - 5 + value);
+          am5.time.add(date, "day", 1);
+          return {
+            date: date.getTime(),
+            value: value,
+          };
+        }
+
+        function generateDatas(count) {
+          var data = [];
+          for (var i = 0; i < count; ++i) {
+            data.push(generateData());
+          }
+          return data;
+        }
+
+        // Create axes
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+        var xAxis = chart.xAxes.push(
+          am5xy.DateAxis.new(root, {
+            maxDeviation: 0,
+            baseInterval: {
+              timeUnit: "day",
+              count: 1,
+            },
+            renderer: am5xy.AxisRendererX.new(root, {
+              minorGridEnabled: true,
+              minorLabelsEnabled: true,
+            }),
+            tooltip: am5.Tooltip.new(root, {}),
+          })
+        );
+
+        xAxis.set("minorDateFormats", {
+          day: "dd",
+          month: "MM",
+        });
+
+        var yAxis = chart.yAxes.push(
+          am5xy.ValueAxis.new(root, {
+            renderer: am5xy.AxisRendererY.new(root, {}),
+          })
+        );
+        let xRenderer = xAxis.get("renderer");
+        xRenderer.labels.template.setAll({
+          // fill: am5.color(0xff0000),
+          fontSize: "0.6em",
+        });
+        let yRenderer = yAxis.get("renderer");
+        yRenderer.labels.template.setAll({
+          // fill: am5.color(0xff0000),
+          fontSize: "0.6em",
+        });
+        // Add series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+        var series = chart.series.push(
+          am5xy.ColumnSeries.new(root, {
+            name: "Series",
+            xAxis: xAxis,
+            yAxis: yAxis,
+            valueYField: "value",
+            valueXField: "date",
+            tooltip: am5.Tooltip.new(root, {
+              labelText: "{valueY}",
+            }),
+          })
+        );
+
+        series.columns.template.setAll({ strokeOpacity: 0 });
+
+        // Add scrollbar
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+        // chart.set(
+        //   "scrollbarX",
+        //   am5.Scrollbar.new(root, {
+        //     orientation: "horizontal",
+        //   })
+        // );
+
+        var data = chartdata;
+        series.data.setAll(data);
+
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
+        series.appear(1000);
+        chart.appear(1000, 100);
+      });
+    }
+
+    function renderStepCountChart(element, chartdata) {
+      am5.ready(function () {
+        // Create root element
+        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+        var root = am5.Root.new(element);
+
+        // Set themes
+        // https://www.amcharts.com/docs/v5/concepts/themes/
+        root.setThemes([am5themes_Animated.new(root)]);
+
+        root.dateFormatter.setAll({
+          dateFormat: "yyyy-MM-dd",
+          dateFields: ["valueX"],
+        });
+
+        var data = chartdata;
+        // Create chart
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/
+        var chart = root.container.children.push(
+          am5xy.XYChart.new(root, {
+            focusable: true,
+            panX: true,
+            panY: false,
+            wheelX: "panX",
+            wheelY: "none",
+            paddingLeft: 0,
+            paddingRight: 0,
+          })
+        );
+
+        var easing = am5.ease.linear;
+
+        // hide zoomout button
+        chart.zoomOutButton.set("forceHidden", true);
+
+        // add label
+        // chart.plotContainer.children.push(
+        //   am5.Label.new(root, {
+        //     text: "Pan chart to change date",
+        //     x: 100,
+        //     y: 50,
+        //   })
+        // );
+
+        // Create axes
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+        var xRenderer = am5xy.AxisRendererX.new(root, {
+          minGridDistance: 50,
+          strokeOpacity: 0.2,
+          minorGridEnabled: true,
+        });
+        xRenderer.grid.template.set("forceHidden", true);
+
+        var xAxis = chart.xAxes.push(
+          am5xy.DateAxis.new(root, {
+            maxDeviation: 0.49,
+            snapTooltip: false,
+            baseInterval: {
+              timeUnit: "day",
+              count: 1,
+            },
+            renderer: xRenderer,
+            tooltip: am5.Tooltip.new(root, {}),
+          })
+        );
+
+        var yRenderer = am5xy.AxisRendererY.new(root, { inside: true });
+        yRenderer.grid.template.set("forceHidden", true);
+
+        var yAxis = chart.yAxes.push(
+          am5xy.ValueAxis.new(root, {
+            maxDeviation: 0,
+            renderer: yRenderer,
+          })
+        );
+        let xRendere = xAxis.get("renderer");
+        xRendere.labels.template.setAll({
+          // fill: am5.color(0xff0000),
+          fontSize: "0.6em",
+        });
+        let yRendere = yAxis.get("renderer");
+        yRendere.labels.template.setAll({
+          // fill: am5.color(0xff0000),
+          fontSize: "0.6em",
+        });
+        // Add series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+        var series = chart.series.push(
+          am5xy.ColumnSeries.new(root, {
+            xAxis: xAxis,
+            yAxis: yAxis,
+            valueYField: "value",
+            valueXField: "date",
+            tooltip: am5.Tooltip.new(root, {
+              pointerOrientation: "vertical",
+              labelText: "{valueY}",
+            }),
+          })
+        );
+
+        series.columns.template.setAll({
+          cornerRadiusTL: 10,
+          cornerRadiusTR: 10,
+          maxWidth: 20,
+          strokeOpacity: 0,
+        });
+
+        series.columns.template.adapters.add("fill", function (fill, target) {
+          if (target.dataItem.get("valueY") < 6000) {
+            return am5.color(0xdadada);
+          }
+          return fill;
+        });
+
+        // Set up data processor to parse string dates
+        // https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+        series.data.processor = am5.DataProcessor.new(root, {
+          dateFormat: "yyyy-MM-dd",
+          dateFields: ["date"],
+        });
+
+        series.data.setAll(data);
+
+        // do not allow tooltip  to move horizontally
+        series.get("tooltip").adapters.add("x", function (x) {
+          return chart.plotContainer.toGlobal({
+            x: chart.plotContainer.width() / 2,
+            y: 0,
+          }).x;
+        });
+
+        // add ranges
+        var goalRange = yAxis.createAxisRange(
+          yAxis.makeDataItem({
+            value: 6000,
+          })
+        );
+
+        goalRange.get("grid").setAll({
+          forceHidden: false,
+          strokeOpacity: 0.2,
+        });
+
+        var goalLabel = goalRange.get("label");
+
+        goalLabel.setAll({
+          centerY: am5.p100,
+          centerX: am5.p100,
+          text: "Goal",
+        });
+
+        // put to other side
+        goalLabel.adapters.add("x", function (x) {
+          return chart.plotContainer.width();
+        });
+
+        var goalRange2 = yAxis.createAxisRange(
+          yAxis.makeDataItem({
+            value: 12000,
+          })
+        );
+
+        goalRange2.get("grid").setAll({
+          forceHidden: false,
+          strokeOpacity: 0.2,
+        });
+
+        var goalLabel2 = goalRange2.get("label");
+
+        goalLabel2.setAll({
+          centerY: am5.p100,
+          centerX: am5.p100,
+          text: "2 x Goal",
+        });
+
+        // put to other side
+        goalLabel2.adapters.add("x", function (x) {
+          return chart.plotContainer.width();
+        });
+
+        // reposition when width changes
+        chart.plotContainer.onPrivate("width", function () {
+          goalLabel.markDirtyPosition();
+          goalLabel2.markDirtyPosition();
+        });
+
+        // Add cursor
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+        var cursor = chart.set(
+          "cursor",
+          am5xy.XYCursor.new(root, {
+            // alwaysShow: true,
+            behavior: "zoomX",
+            // positionX: 0.5, // make it always be at the center
+          })
+        );
+        cursor.lineY.set("visible", false);
+
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
+        chart.appear(1000, 50);
+      });
+    }
+
+    function renderGuageChart(element, chartdata) {
+      am5.ready(function () {
+        // Create root element
+        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+        var root = am5.Root.new(element);
+
+        // Set themes
+        // https://www.amcharts.com/docs/v5/concepts/themes/
+        root.setThemes([am5themes_Animated.new(root)]);
+
+        // Create chart
+        // https://www.amcharts.com/docs/v5/charts/radar-chart/
+        var chart = root.container.children.push(
+          am5radar.RadarChart.new(root, {
+            panX: false,
+            panY: false,
+            wheelX: "panX",
+            wheelY: "zoomX",
+            innerRadius: am5.percent(20),
+            startAngle: -90,
+            endAngle: 180,
+          })
+        );
+
+        // Data
+        var data = [
+          {
+            category: "Heart Points",
+            value: chartdata[0].value,
+            full: 100,
+            columnSettings: {
+              fill: chart.get("colors").getIndex(0),
+            },
+          },
+          {
+            category: "Step Count",
+            value: chartdata[1].value,
+            full: 12000,
+            columnSettings: {
+              fill: chart.get("colors").getIndex(1),
+            },
+          },
+          {
+            category: "Calories Burned",
+            value: chartdata[2].value,
+            full: 100,
+            columnSettings: {
+              fill: chart.get("colors").getIndex(2),
+            },
+          },
+        ];
+
+        // Add cursor
+        // https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+        var cursor = chart.set(
+          "cursor",
+          am5radar.RadarCursor.new(root, {
+            behavior: "zoomX",
+          })
+        );
+
+        cursor.lineY.set("visible", false);
+
+        // Create axes and their renderers
+        // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+        var xRenderer = am5radar.AxisRendererCircular.new(root, {
+          //minGridDistance: 50
+        });
+
+        xRenderer.labels.template.setAll({
+          radius: 10,
+        });
+
+        xRenderer.grid.template.setAll({
+          forceHidden: true,
+        });
+
+        var xAxis = chart.xAxes.push(
+          am5xy.ValueAxis.new(root, {
+            renderer: xRenderer,
+            min: 0,
+            max: 9000,
+            strictMinMax: true,
+            // numberFormat: "#'%'",
+            tooltip: am5.Tooltip.new(root, {}),
+          })
+        );
+
+        var yRenderer = am5radar.AxisRendererRadial.new(root, {
+          minGridDistance: 20,
+        });
+
+        yRenderer.labels.template.setAll({
+          centerX: am5.p100,
+          fontWeight: "500",
+          fontSize: 18,
+          templateField: "columnSettings",
+        });
+
+        yRenderer.grid.template.setAll({
+          forceHidden: true,
+        });
+
+        var yAxis = chart.yAxes.push(
+          am5xy.CategoryAxis.new(root, {
+            categoryField: "category",
+            renderer: yRenderer,
+          })
+        );
+
+        yAxis.data.setAll(data);
+
+        // Create series
+        // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+        var series1 = chart.series.push(
+          am5radar.RadarColumnSeries.new(root, {
+            xAxis: xAxis,
+            yAxis: yAxis,
+            clustered: false,
+            valueXField: "full",
+            categoryYField: "category",
+            fill: root.interfaceColors.get("alternativeBackground"),
+          })
+        );
+
+        series1.columns.template.setAll({
+          width: am5.p100,
+          fillOpacity: 0.08,
+          strokeOpacity: 0,
+          cornerRadius: 20,
+        });
+
+        series1.data.setAll(data);
+
+        var series2 = chart.series.push(
+          am5radar.RadarColumnSeries.new(root, {
+            xAxis: xAxis,
+            yAxis: yAxis,
+            clustered: false,
+            valueXField: "value",
+            categoryYField: "category",
+          })
+        );
+
+        series2.columns.template.setAll({
+          width: am5.p100,
+          strokeOpacity: 0,
+          tooltipText: "{category}: {valueX}",
+          cornerRadius: 20,
+          templateField: "columnSettings",
+        });
+
+        series2.data.setAll(data);
+
+        // Animate chart and series in
+        // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+        series1.appear(1000);
+        series2.appear(1000);
+        chart.appear(1000, 100);
+      });
+    }
+  </script>
+</body>
+{% endblock %}

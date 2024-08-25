@@ -1,0 +1,252 @@
+{% extends "MasterHeader.html" %} {% block content %}
+
+<body>
+  <button
+    type="button"
+    class="btn btn-primary"
+    style="display: none"
+    data-bs-toggle="modal"
+    data-bs-target="#appPrescriptionModal"
+    id="appPrescriptionBtn"
+  ></button>
+  <div
+    class="modal fade"
+    id="appPrescriptionModal"
+    tabindex="-1"
+    aria-labelledby="appPrescriptionLabel"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="appPrescriptionLabel"></h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" style="height: 600px">
+          <div id="appPrescriptionBody">
+            <div class="row" style="margin-right: 0px">
+              <textarea
+                type="text"
+                class="form-control"
+                placeholder="Enter prescription"
+                id="addPrescriptionData"
+                style="height: 500px"
+                wrap="soft"
+              ></textarea>
+            </div>
+            <br />
+            <input
+              type="text"
+              class="form-control"
+              style="width: 68%"
+              id="doctoremailid"
+              placeholder="Enter your email to get secured prescription signature link"
+            />
+            <button
+              style="float: right; margin-top: -38px !important"
+              class="btn btn-primary mt-3"
+              id="addPres"
+              onclick="createDocumentSignature()"
+            >
+              Create and Sign Prescription
+            </button>
+            <button
+              class="btn btn-sm btn-info my-3"
+              type="button"
+              id="addPresLoading"
+              style="display: none; float: right; margin-top: -38px !important"
+            >
+              <span
+                class="spinner-border spinner-border-sm"
+                style="margin-right: 5px"
+                aria-hidden="true"
+              ></span>
+              <span role="status"> Creating Prescription...</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="max-width: -webkit-fill-available">
+    <div
+      class="row"
+      style="
+        background-color: #e9f4f7;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      "
+    >
+      <element style="font-size: 18px">
+        Welcome Doctor <span class="loginUserFullName"></span>! Please find
+        below the details of Patient Medical Prescriptions
+      </element>
+    </div>
+    <div class="mt-3">
+      <button
+        style="float: right; margin-right: 260px"
+        class="btn btn-secondary"
+        onclick="loadPrescriptionModal()"
+      >
+        Add Prescription
+      </button>
+      <br />
+      <br />
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" style="height: 500px; overflow-y: scroll">
+        <div
+          class="prescription"
+          id="prescriptionGrid"
+          style="width: unset"
+        ></div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+  <script>
+    const driver = window.driver.js.driver;
+    var driverObj = driver();
+    var selectedPatient = localStorage.getItem("SelectedPatient");
+    var doctorName = localStorage.getItem("FullName");
+    var doctorMail = localStorage.getItem("LoginUserName");
+    var patientMail = "dataflow.expedition@gmail.com";
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1; // Months start at 0!
+    let dd = today.getDate();
+
+    if (dd < 10) dd = "0" + dd;
+    if (mm < 10) mm = "0" + mm;
+
+    var tdyDate = dd + "/" + mm + "/" + yyyy;
+    var prescriptionData = [];
+    var prescriptionGridObj = new ej.grids.Grid({
+      dataSource: [],
+      allowPaging: true,
+      allowSorting: true,
+      // height: 350,
+      // width: 1350,
+      rowHeight: 40,
+      // Header of Grid
+      columns: [
+        { field: "name", headerText: "Prescription Id" },
+        { field: "doctor", headerText: "Doctor" },
+        { field: "visited", headerText: "Visited On" },
+        { field: "document", headerText: "Document", visible: false },
+        {
+          headerText: "Action",
+          // width: 100,
+          commands: [
+            {
+              type: "view",
+              buttonOption: {
+                content: "View Prescription",
+              },
+            },
+          ],
+        },
+      ],
+      commandClick: function (args) {
+        let rowData = args.rowData;
+        let paramsObj = {};
+        paramsObj.document = rowData.document;
+        let url = "/retrieve_doc_ocp?dbParams=" + JSON.stringify(paramsObj);
+        fetch(url)
+          .then((response) => response.text())
+          .then((data) => {
+            // alert(data);
+            window.open(data, "_blank");
+          });
+      },
+    });
+    prescriptionGridObj.appendTo("#prescriptionGrid");
+
+    function loadPrescriptionModal() {
+      $("#appPrescriptionBtn").click();
+
+      driverObj.highlight({
+        element: "#addPres",
+        popover: {
+          title: "Open Text Core Signture",
+          description:
+            "Here we are leveraging Open Text Core Signature service for a doctor to electronically sign the prescription. The prescription is also shared with patient to sign.",
+          side: "left",
+          align: "start",
+        },
+      });
+      $(".driver-popover")[0].style.inset = "500px 600px auto auto";
+      $(".driver-popover-arrow").removeClass(
+        "driver-popover-arrow-side-bottom driver-popover-arrow-align-start"
+      );
+      $(".driver-popover-arrow").addClass(
+        "driver-popover-arrow-side-left driver-popover-arrow-align-end"
+      );
+    }
+    $(document).ready(function () {
+      $(".loginUserFullName")[0].innerText = localStorage.getItem("FullName");
+      fetch("/get_prescriptions")
+        .then((res) => res.text())
+        .then((data) => {
+          parsedData = JSON.parse(data);
+          prescriptionData = parsedData.filter(x=>x.name.includes(selectedPatient) || x.name.includes(selectedPatient.replace(" ","")));
+          prescriptionGridObj.dataSource = prescriptionData;
+        });
+    });
+
+    function createDocumentSignature() {
+      document.getElementById("addPres").style.display = "none";
+      document.getElementById("addPresLoading").style.display = "block";
+      let paramsObj = {};
+      paramsObj.selectedPatient = selectedPatient;
+      paramsObj.doctorMail = $("#doctoremailid").val();
+      paramsObj.doctorName = doctorName;
+      paramsObj.patientMail = patientMail;
+      paramsObj.prescriptionId = prescriptionData.length + 1;
+      paramsObj.visitedDate = tdyDate;
+      paramsObj.prescriptionSubject =
+        selectedPatient+" Prescription " +
+        paramsObj.prescriptionId +
+        " dated " +
+        tdyDate;
+      paramsObj.prescriptionMessage =
+        "Below is the given prescription for "+selectedPatient+" on doctor visit";
+      paramsObj.prescriptionText = $("#addPrescriptionData").val();
+      let url =
+        "/create_document_sign_ocp?dbParams=" + JSON.stringify(paramsObj);
+      fetch(url)
+        .then((response) => response.text())
+        .then((data) => {
+          fetch("/get_prescriptions")
+            .then((res) => res.text())
+            .then((data) => {
+              parsedData = JSON.parse(data);
+              prescriptionData = parsedData.filter(x=>x.name.includes(selectedPatient) || x.name.includes(selectedPatient.replace(" ","")));
+              prescriptionGridObj.dataSource = prescriptionData;
+              document.getElementById("addPres").style.display = "block";
+              document.getElementById("addPresLoading").style.display = "none";
+              $("#appPrescriptionModal").modal("toggle");
+              Swal.fire({
+                title:
+                  "Please sign the prescription from secured link sent to the provided mail id",
+                icon: "success",
+              });
+            });
+          // prescriptionGridObj.dataSource = prescriptionData;
+        });
+    }
+  </script>
+</body>
+
+{% endblock %}

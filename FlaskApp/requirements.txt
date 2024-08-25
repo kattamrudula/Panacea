@@ -1,0 +1,26 @@
+#Generic Libraries
+flask
+flask_cors
+pandas
+dill
+python-dotenv
+
+moviepy==1.0.3
+PyPDF2==3.0.1
+Pillow==10.1.0
+python-docx==1.1.0
+pytesseract==0.3.10
+SpeechRecognition==3.8.1
+
+PyPDF2
+google-generativeai
+textstat
+spacy
+langchain_google_genai
+faiss-cpu
+langchain
+
+codecarbon
+dash
+dash_bootstrap_components
+fire

@@ -1,0 +1,1372 @@
+<!-- ored-toder.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+  <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+  <link href="static/CDN/scripts/timeline.css" rel="stylesheet" />
+  <link href="static/CDN/scripts/chat.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/showdown-table@1.0.1/dist/showdown-table.min.js"></script>
+<!-- <link rel="stylesheet" href="static/CDN/landing/assets/css/main.css" /> -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+/>
+<script
+  src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+  crossorigin="anonymous"
+></script>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+  crossorigin="anonymous"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+  crossorigin="anonymous"
+  type="text/javascript"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.2/dist/sweetalert2.all.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.2/dist/sweetalert2.min.css"
+/>
+<link rel="stylesheet" href="static/CDN/scripts/colored-toasts.css" />
+<link
+  rel="stylesheet"
+  href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"
+/>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+  type="text/javascript"
+></script>
+
+<link
+  href="https://cdn.syncfusion.com/ej2/25.1.35/ej2-base/styles/material.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.syncfusion.com/ej2/ej2-grids/styles/material.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.syncfusion.com/ej2/ej2-buttons/styles/material.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.syncfusion.com/ej2/ej2-navigations/styles/material.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.syncfusion.com/ej2/25.1.35/ej2-lists/styles/material.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.syncfusion.com/ej2/25.1.35/ej2-layouts/styles/material.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.syncfusion.com/ej2/25.1.35/ej2-inputs/styles/material.css"
+  rel="stylesheet"
+/>
+<link
+  href="//cdn.syncfusion.com/ej2/21.2.3/ej2-dropdowns/styles/material.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+
+<script
+  src="https://cdn.syncfusion.com/ej2/25.1.35/dist/ej2.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="//cdn.syncfusion.com/ej2/21.2.3/ej2-base/dist/global/ej2-base.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="//cdn.syncfusion.com/ej2/21.2.3/ej2-data/dist/global/ej2-data.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="//cdn.syncfusion.com/ej2/21.2.3/ej2-inputs/dist/global/ej2-inputs.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="//cdn.syncfusion.com/ej2/21.2.3/ej2-buttons/dist/global/ej2-buttons.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="//cdn.syncfusion.com/ej2/21.2.3/ej2-lists/dist/global/ej2-lists.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="//cdn.syncfusion.com/ej2/21.2.3/ej2-popups/dist/global/ej2-popups.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="//cdn.syncfusion.com/ej2/21.2.3/ej2-dropdowns/dist/global/ej2-dropdowns.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://cdn.syncfusion.com/ej2/syncfusion-helper.js"
+  type="text/javascript"
+></script>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"
+  type="text/javascript"
+></script>
+<!-- Essential JS 2 Sidebar's global script -->
+<script
+  src="https://cdn.syncfusion.com/ej2/ej2-navigations/dist/global/ej2-navigations.min.js"
+  type="text/javascript"
+></script>
+
+<link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
+<!--new-->
+<link rel="stylesheet" href="CDN/scripts/style.css" type="text/css" />
+<script
+  type="text/javascript"
+  src="https://www.gstatic.com/charts/loader.js"
+></script>
+<!-- Resources -->
+<script
+  src="https://cdn.amcharts.com/lib/5/index.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://cdn.amcharts.com/lib/5/map.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://cdn.amcharts.com/lib/5/xy.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://cdn.amcharts.com/lib/5/themes/Animated.js"
+  type="text/javascript"
+></script>
+
+<script
+  src="https://cdn.amcharts.com/lib/5/percent.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://cdn.amcharts.com/lib/5/radar.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://storage.googleapis.com/data-scenarios/WebAPI/CDN/scripts/wc.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://cdn.amcharts.com/lib/5/wc.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://cdn.amcharts.com/lib/5/hierarchy.js"
+  type="text/javascript"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"
+></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css"
+  type="text/css"
+/>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+  type="text/javascript"
+></script>
+
+<link
+  href="//cdn.syncfusion.com/ej2/21.2.3/ej2-dropdowns/styles/bootstrap5.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="https://cdn.syncfusion.com/ej2/scripts/ej2-polyfills.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/scripts/ej2-scripts.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/scripts/ej2-popups.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/scripts/ej2-inputs.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/scripts/ej2-lists.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/scripts/ej2-dropdowns.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/scripts/ej2-buttons.min.js"></script>
+
+<script src="https://cdn.amcharts.com/lib/5/themes/Responsive.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+
+  <title>Panacea</title>
+  <style>
+    div.--active>.menu {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .notification .menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 450px;
+      background-color: white;
+      box-shadow: 0px 0px 30px -5px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.3s;
+    }
+
+    .notification>.menu>.header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 3.5em;
+      color: #4f565c;
+      font-weight: bold;
+    }
+
+    .notification>.menu>.header>.count {
+      width: 1.4em;
+      height: 1.4em;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #7578d4;
+      color: white;
+      border-radius: 50%;
+      margin-left: 0.5em;
+      padding-top: 1px;
+    }
+
+    .notification>.menu>.content {
+      color: #8e98a0;
+      height: 34em;
+      max-height: 34em;
+    }
+
+    .notification>.menu>.content>ul {
+      border-top: 1px solid #dce1e6;
+      border-bottom: 1px solid #dce1e6;
+    }
+
+    .notification>.menu>.content>ul>li {
+      padding: 0.4em 0.2em;
+      cursor: pointer;
+    }
+
+    .notification>.menu>.content>ul>li:nth-of-type(1n+2) {
+      border-top: 1px solid #dce1e6;
+    }
+
+    .notification>.menu>.content>ul>li.--unread {
+      background-color: #f1f3f6;
+    }
+
+    .notification>.menu>.content>ul>li>div {
+      display: flex;
+      align-items: center;
+    }
+
+    .notification>.menu>.content>ul>li>div>img {
+      -o-object-fit: cover;
+      object-fit: cover;
+      -o-object-position: center;
+      object-position: center;
+      width: 3em;
+      height: 3em;
+      border-radius: 50%;
+    }
+
+    .notification>.menu>.content>ul>li>div>span {
+      text-align: left;
+      line-height: 1.6;
+      margin-left: 1.3em;
+      font-size: 11px;
+    }
+
+    .notification>.menu>.footer {
+      display: flex;
+      /* justify-content: center;
+      align-items: center; */
+      text-align: center;
+      width: 100%;
+      height: 2em;
+      color: #7578d4;
+      font-weight: bold;
+    }
+
+    .notification>.menu>.footer>a {
+      width: inherit;
+      height: inherit;
+      text-decoration: underline;
+    }
+  </style>
+  <style>
+    .active {
+      color: yellowgreen !important;
+      font-weight: bold;
+    }
+
+    .keyboard-div {
+      /* max-width: 850px; */
+      width: 80%;
+      position: absolute;
+      margin-top: -300px;
+      z-index: 9999;
+    }
+
+    /* input {
+      width: 50%;
+      height: 100px;
+      padding: 20px;
+      font-size: 20px;
+      border: none;
+      box-sizing: border-box;
+    } */
+
+    .simple-keyboard {
+      max-width: 850px;
+    }
+
+    .selected-link {
+      background-color: #555;
+      padding-top: 7px;
+      padding-left: 20px;
+      padding-right: 18px;
+      padding-bottom: 10px;
+      /* Example background color for selected link */
+      /* Example text color for selected link */
+      /* Add any other styles to highlight the selected link */
+    }
+
+    /* Center the "A" icons */
+    .font-sizes .font-icon span {
+      display: inline-block;
+      text-align: center;
+    }
+
+    /* Styles for the navigation drawer */
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      /* Adjust the right position */
+      width: 300px;
+      height: 100%;
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+      color: #fff;
+      z-index: 1000;
+      transition: right 0.5s ease;
+      /* Transition for right position */
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .nav-drawer.open {
+      right: 0;
+      /* Open position */
+    }
+
+    .nav-drawer h2 {
+      margin-bottom: 10px;
+    }
+
+    .nav-drawer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-drawer li {
+      margin-bottom: 10px;
+    }
+
+    .nav-drawer button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .nav-drawer button:hover {
+      background-color: #555;
+    }
+
+    .nav-drawer .sub-heading {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .nav-drawer select {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #555;
+      color: #fff;
+      border: none;
+      appearance: none;
+    }
+
+    .nav-drawer select:focus {
+      outline: none;
+    }
+
+    .nav-drawer .font-sizes {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-drawer .font-sizes-line-height {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-drawer .font-sizes-letter-spacing {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .keyboard-button {
+      font-size: 24px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .font-icon {
+      font-size: 24px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .selected-icon {
+      color: #ffcc00 !important;
+      /* Yellow color for selected icon */
+      background-color: #555 !important;
+    }
+
+    .small-font {
+      font-size: 14px;
+    }
+
+    .medium-font {
+      font-size: 18px;
+    }
+
+    .large-font {
+      font-size: 24px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+
+
+
+    .gmail-icon-style {
+      /* Set desired styles for the icon, e.g., size, margin, etc. */
+      width: 20px;
+      height: 18px;
+      margin-right: 5px;
+    }
+    .leaf-icon-style {
+      /* Set desired styles for the icon, e.g., size, margin, etc. */
+      width: 35px;
+      height: 35px;
+      margin-left: 5px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .github-icon-style {
+      width: 22px;
+      height: 20px;
+      margin-right: 5px;
+      color: white;
+    }
+
+    .outlook-icon-style {
+      /* Set desired styles for the icon, e.g., size, margin, etc. */
+      width: 20px;
+      height: 18px;
+      margin-right: 5px;
+    }
+
+    /* .tooltip {
+  position: relative;
+  display: inline-block;
+  /* color: white;
+  cursor: pointer; */
+    .disabled-span {
+      pointer-events: none;
+      color: gray;
+      /* Optionally, change the color to visually indicate it's disabled */
+    }
+
+    .floating-div {
+      position: absolute;
+      /* top: 50%; */
+      left: 55%;
+      width: 38%;
+      margin-left: -70px;
+      /* transform: translate(-50%,-50%); */
+      background-color: rgb(97, 97, 107);
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      z-index: 9;
+      transition: opacity 0.3s;
+    }
+
+    /* .container {
+      padding: 2% 0;
+    } */
+
+    #container {
+      position: relative;
+      height: 100%;
+    }
+
+    #footer {
+      position: fixed;
+      padding: 10px 10px 0px 10px;
+      bottom: 0;
+      width: 100%;
+      /* Height of the footer*/
+      height: 40px;
+      text-align: center;
+      /* background: grey; */
+    }
+
+    #grid-container {
+      height: calc(100% - 56px);
+      /* subtract height of FAB */
+    }
+
+    .e-checkbox-wrapper .e-frame.e-check,
+    .e-css.e-checkbox-wrapper .e-frame.e-check {
+      background-color: #2b0210;
+    }
+
+    .e-checkbox-wrapper .e-frame.e-check,
+    .e-css.e-checkbox-wrapper .e-frame.e-check:hover {
+      background-color: #2b0210;
+    }
+
+    #add-btn {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+    }
+
+    #navtabs .nav.nav-tabs {
+      --bs-nav-link-padding-x: 0;
+    }
+
+    #navtabs .nav-item {
+      font-size: 14px;
+      padding: 8px;
+    }
+
+    #navtabs .nav-item.active {
+      background-color: darkgrey;
+    }
+
+    #navtabs .nav-item.active .nav-link {
+      color: white !important;
+    }
+
+    #navtabs .nav-tabs .nav-link {
+      border: none;
+    }
+
+    #navtabs .nav-item.active .nav-link:hover {
+      border: none;
+    }
+
+    /* CSS styles for the modal content and form inputs */
+    /* .modal-content {
+      max-width: 800px;
+      /* adjust as needed */
+    /* } */ */
+
+    #insertForm input[type="text"],
+    #insertForm select {
+      max-width: 80%;
+      /* adjust as needed */
+    }
+
+    .input_field {
+      width: 300px;
+
+    }
+
+    /* .modal-dialog {
+      max-width: 800px;
+      /* adjust as needed */
+      margin: 0 auto;
+      /* centers the modal horizontally */
+    } */
+
+    #navtabs {
+      /* add a clearfix to the container to clear floats */
+      overflow: auto;
+    }
+
+    .right-btn {
+      float: right !important;
+      position: relative;
+      margin-left: 10px;
+    }
+
+    input.btn {
+      float: right !important;
+      position: relative;
+      margin-left: 10px;
+    }
+
+    #navtabs button.btn {
+      float: right;
+      border: 2px solid black;
+    }
+
+    .form-group label,
+    legend {
+      margin: 5px !important;
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin: 10px !important;
+    }
+
+    .form-group input[type="radio"],
+    .form-group input[type="checkbox"] {
+      font-weight: normal;
+    }
+
+    #insertForm input[type="text"],
+    #insertForm select {
+      max-width: 80%;
+      /* adjust as needed */
+    }
+
+    /* .nav-item:hover .dropdown-menu {
+            display: block;
+        } */
+    .nav-item:hover .dropdown-menu {
+      display: block;
+      background-color: #343a40;
+      /* Dark background color */
+    }
+
+    /* Add this style to customize the color of dropdown items */
+    .dropdown-item {
+      color: #ffffff;
+      /* Text color for dropdown items */
+    }
+
+    .dropdown-item:hover {
+      background-color: #495057;
+      /* Hover background color for dropdown items */
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body style="overflow-y: hidden;">
+
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <a class="navbar-brand" href="/" id=""><img src="static/CDN/images/panacealogonew.png" alt="" style="width: 6.5em;margin-left: 10px;"
+      /></a>
+
+    <!-- Navbar menu -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" id="dynamicMenu">
+        <!-- dynamic generation -->
+      </ul>
+    </div>
+
+    </div>
+
+    <!-- User name and welcome window -->
+    <span class="navbar-text" id="welcome_text"> Welcome</span>
+    <span class="navbar-text" style="margin-left:5px;" id="user" onmouseover="showToolTip()"
+      onmouseout="hideToolTip()"></span> !
+    &nbsp;
+
+    <!-- Provider icon -->
+    <span><i id="providericon"></i></span>
+
+    <span><i id="leaficon"  onclick="(()=>{window.open('http://127.0.0.1:5000','_blank')})()"></i></span>
+
+   
+    <!-- Accessibility Button -->
+    <a class="nav-link text-white" onclick="toggleNavDrawer()" style="margin-right:2px;margin-left:15px;"
+      title="Accessibility">
+      <i class="bi bi-view-stacked me-1" style="font-size: large;"></i></a>
+
+    <!-- Logout Button -->
+    <a class="nav-link text-white" href="#" id="logout" style="margin-right:40px;margin-left:15px;"><i
+        class="bi bi-box-arrow-in-right me-1" style="font-size: x-large;"></i></a>
+  </nav>
+  <!-- Navbar End -->
+
+  <div class="floating-div" id="myTooltip"></div>
+
+  <!-- Navigation Drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <h2 id="navDdrawer_Accessibility">Accessibility</h2>
+    <br>
+    <div class="sub-heading" id="navDdrawer_Language">Languages</div>
+    <select id="languageSelect">
+      <option value="EN">English</option>
+      <option value="HI">हिन्दी (Hindi)</option>
+      <option value="FR">Français (French)</option>
+      <option value="RU">Русский (Russian)</option>
+      <option value="AR">العربية (Arabic)</option>
+      <option value="HE">עִבְרִית (Hebrew)</option>
+      <option value="FA">فارسی (Persian)</option>
+      <option value="ZH">中文 (Chinese)</option>
+      <option value="JA">日本語 (Japanese)</option>
+      <option value="KO">한국어 (Korean)</option>
+    </select>
+
+    <div class="sub-heading font-sizes" id="navDdrawer_FontSize">Font Sizes</div>
+    <div class="font-sizes">
+      <button class="font-icon small-font" data-size="small" id="smallButton"><span
+          style="font-size: 14px;">A</span></button>
+      <button class="font-icon medium-font" data-size="medium" id="mediumButton"><span
+          style="font-size: 18px;">A</span></button>
+      <button class="font-icon large-font" data-size="large" id="largeButton"><span
+          style="font-size: 24px;">A</span></button>
+    </div>
+
+    <div class="sub-heading font-sizes" id="navDdrawer_LineHeight">Adjust Line Height</div>
+    <div class="font-sizes-line-height" style="justify-content: space-around;">
+      <a class="nav-link text-white" onclick="LineHeightChange('16px')" style="margin-right:5px;margin-left:20px;"
+        title="Normal">
+        <i class="bi bi-distribute-vertical me-1" data-size="16px" style="font-size: small;"></i>
+      </a>
+
+      <a class="nav-link text-white" onclick="LineHeightChange('24px')" style="margin-right:5px;margin-left:20px;"
+        title="Medium">
+        <i class="bi bi-distribute-vertical me-1" data-size="24px" style="font-size: large;"></i>
+      </a>
+
+      <a class="nav-link text-white" onclick="LineHeightChange('32px')" style="margin-right:5px;margin-left:20px;"
+        title="Big">
+        <i class="bi bi-distribute-vertical me-1" data-size="32px" style="font-size: x-large;"></i>
+      </a>
+      <!-- <i class="bi-distribute-vertical"></i> -->
+    </div>
+    <div class="sub-heading font-sizes" id="navDdrawer_LetterSpacing">Adjust Letter Spacing</div>
+    <div class="font-sizes-letter-spacing" style="justify-content: space-around;">
+      <a class="nav-link text-white" onclick="LetterSpacingChange('-1px')" style="margin-right:5px;margin-left:20px;"
+        title="Normal">
+        <i class="bi bi-distribute-horizontal me-1" data-size="-1px" style="font-size: small;"></i>
+      </a>
+
+      <a class="nav-link text-white" onclick="LetterSpacingChange('normal')" style="margin-right:5px;margin-left:20px;"
+        title="Medium">
+        <i class="bi bi-distribute-horizontal me-1" data-size="normal" style="font-size: large;"></i>
+      </a>
+
+      <a class="nav-link text-white" onclick="LetterSpacingChange('1px')" style="margin-right:5px;margin-left:20px;"
+        title="Big">
+        <i class="bi bi-distribute-horizontal me-1" data-size="1px" style="font-size: x-large;"></i>
+      </a>
+    </div>
+    <div class="sub-heading font-sizes" id="navDdrawer_KeyboardNavigation">Keyboard Navigation</div>
+    <div class="font-sizes" style="justify-content: space-around;">
+      <button class="keyboard-button  medium-font" id="onButton" onclick="renderKeyboard('onButton')"><span
+          style="font-size: 18px;">On</span></button>
+      <button class="keyboard-button  medium-font selected-icon" id="offButton"
+        onclick="renderKeyboard('offButton')"><span style="font-size: 18px;">Off</span></button>
+    </div>
+  </div>
+
+  <!-- Overlay to close the navigation drawer when clicking outside -->
+  <div class="overlay" id="overlay" onclick="closeNavDrawer()"></div>
+
+  <!-- Container for the child content -->
+  <div id="child-content">
+    {% block content %} 
+    {% endblock %} 
+  </div>
+
+
+  <div class="keyboard-div" style="display: none;" id="keyboardDiv">
+    <input class="input" placeholder="Tap on the virtual keyboard to start" />
+    <div class="simple-keyboard"></div>
+  </div>
+
+  <script>
+    function httpGet(theUrl) {
+      // localStorage.setItem("UserName", "slope.expedition@gmail.com")
+      let xmlhttp;
+
+      if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+      } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          return xmlhttp.responseText;
+        }
+      };
+      xmlhttp.open("GET", theUrl, false);
+      xmlhttp.send();
+
+      return xmlhttp.response;
+    }
+
+    let Keyboard = window.SimpleKeyboard.default;
+
+    let keyboard = new Keyboard({
+      onChange: input => onChange(input),
+      onKeyPress: button => onKeyPress(button)
+    });
+
+    /**
+     * Update simple-keyboard when input is changed directly
+     */
+    document.querySelector(".input").addEventListener("input", event => {
+      keyboard.setInput(event.target.value);
+    });
+
+    console.log(keyboard);
+
+    function onChange(input) {
+      document.querySelector(".input").value = input;
+      console.log("Input changed", input);
+    }
+
+    function onKeyPress(button) {
+      console.log("Button pressed", button);
+
+      /**
+       * If you want to handle the shift and caps lock buttons
+       */
+      if (button === "{shift}" || button === "{lock}") handleShift();
+    }
+
+    function handleShift() {
+      let currentLayout = keyboard.options.layoutName;
+      let shiftToggle = currentLayout === "default" ? "shift" : "default";
+
+      keyboard.setOptions({
+        layoutName: shiftToggle
+      });
+    }
+
+    function renderKeyboard(buttonID) {
+      if (buttonID == 'onButton') {
+        document.getElementById('keyboardDiv').style.display = "block";
+        var selectedIcon = document.getElementById(buttonID);
+        selectedIcon.classList.add('selected-icon');
+        document.getElementById("offButton").classList.remove('selected-icon');
+      }
+      else {
+        document.getElementById('keyboardDiv').style.display = "none";
+        var selectedIcon = document.getElementById(buttonID);
+        selectedIcon.classList.add('selected-icon');
+        document.getElementById("onButton").classList.remove('selected-icon');
+      }
+
+      closeNavDrawer();
+    }
+
+
+    let currentUser = localStorage.getItem("UserName");
+    let currentWsp = localStorage.getItem("CurrentWsp");
+    var selectedLanguage = "";
+    var selectedFont = "";
+    var newLineHeight = "";
+    var newLetterSpacing = "";
+    var fontSize = "";
+    var translations = "";
+    var currentPage = "";
+    var CreatePermission = "";
+    var ReadPermission = "";
+    var UpdatePermission = "";
+    var DeletePermission = "";
+
+    function changeFontSize(size) {
+      sessionStorage.setItem(currentUser + '-FontSize', size);
+      selectedFont = sessionStorage.getItem(currentUser + '-FontSize');
+      var fontSizeOptions = {
+        small: '14px',
+        medium: '16px',
+        large: '20px'
+      };
+      fontSize = fontSizeOptions[size];
+
+      document.body.style.fontSize = fontSize;
+      console.log("---------->>>>>>", size, fontSize, window.getComputedStyle(document.body).getPropertyValue('font-size'), sessionStorage.getItem(currentUser + '-FontSize'))
+
+      // Highlight selected icon
+      var fontIcons = document.querySelectorAll('.font-icon');
+      fontIcons.forEach(function (icon) {
+        icon.classList.remove('selected-icon');
+      });
+      // sessionStorage.setItem(currentUser + '-FontSize', size)
+      var selectedIcon = document.querySelector('.font-icon[data-size="' + size + '"]');
+      selectedIcon.classList.add('selected-icon');
+      closeNavDrawer(); // Close the navigation drawer after selecting a font size
+    }
+
+    function toggleNavDrawer() {
+      var navDrawer = document.getElementById('navDrawer');
+      var overlay = document.getElementById('overlay');
+      navDrawer.classList.toggle('open');
+      overlay.style.display = navDrawer.classList.contains('open') ? 'block' : 'none';
+      if (navDrawer.classList.contains('open')) {
+        // Highlight the initially selected font size button when the drawer is opened
+        var selectedSize = document.querySelector('.font-sizes .font-icon.selected-icon');
+        if (selectedSize) {
+          selectedSize.classList.remove('selected-icon');
+        }
+        selectedFont = sessionStorage.getItem(currentUser + '-FontSize')
+        if (selectedFont == null)
+          selectedFont = "small";
+
+        var initialSize = document.querySelector('.font-sizes .font-icon[data-size="' + selectedFont + '"]');
+        initialSize.classList.add('selected-icon');
+      }
+    }
+
+    function closeNavDrawer() {
+      var navDrawer = document.getElementById('navDrawer');
+      var overlay = document.getElementById('overlay');
+      navDrawer.classList.remove('open');
+      overlay.style.display = 'none';
+    }
+
+    function csvJSON(csv) {
+      var lines = csv.split("\n");
+      var result = {};
+      var headers = lines[0].split(",");
+      console.log(headers)
+      for (var i = 1; i < lines.length; i++) {
+        var obj = {};
+        var currentline = lines[i].split(",");
+        for (var j = 1; j < headers.length; j++) {
+          obj[headers[j]] = currentline[j];
+        }
+        result[currentline[0]] = obj;
+      }
+      return JSON.stringify(result, null, 4);
+    }
+
+    function loadCSV(path, callback) {
+      fetch(path)
+        .then(response => response.text())
+        .then(data => callback(data))
+        .catch(error => console.error('Error loading the CSV file:', error));
+    }
+
+    function changeLanguage(translations, selectedLanguage) {
+      // selectedLanguage = document.getElementById("languageSelect").value;
+      sessionStorage.setItem(currentUser + '-Language', selectedLanguage)
+      selectedLanguage = sessionStorage.getItem(currentUser + '-Language');
+      // var translation = translations[selectedLanguage];
+
+      // console.log(translations, selectedLanguage)
+      // console.log(translation)
+
+      // document.getElementById("header_text").innerText = translations.header_text[selectedLanguage];
+      document.getElementById("footer").innerText = translations.footer[selectedLanguage];
+
+      document.getElementById("welcome_text").innerText = translations.welcome_text[selectedLanguage];
+      document.getElementById("navDdrawer_Accessibility").innerText = translations.navDdrawer_Accessibility[selectedLanguage];
+      document.getElementById("navDdrawer_FontSize").innerText = translations.navDdrawer_FontSize[selectedLanguage];
+      document.getElementById("navDdrawer_Language").innerText = translations.navDdrawer_Language[selectedLanguage];
+      document.getElementById("navDdrawer_LineHeight").innerText = translations.navDdrawer_LineHeight[selectedLanguage];
+      document.getElementById("navDdrawer_LetterSpacing").innerText = translations.navDdrawer_LetterSpacing[selectedLanguage];
+      document.getElementById("navDdrawer_KeyboardNavigation").innerText = translations.navDdrawer_KeyboardNavigation[selectedLanguage];
+      changeNavBarLanguage(translations, selectedLanguage, ".nav-link")
+      changeNavBarLanguage(translations, selectedLanguage, ".dropdown-menu .dropdown-item")
+      closeNavDrawer();
+
+    }
+
+    // Function to change line height dynamically
+    function changeLineHeight(newLineHeight) {
+      sessionStorage.setItem(currentUser + '-LineHeight', newLineHeight)
+      newLineHeight = sessionStorage.getItem(currentUser + '-LineHeight');
+
+      const icons = $('.font-sizes-line-height i');
+      icons.removeClass('selected-icon');
+      const selectedIcon = icons.filter(function () {
+        return $(this).data('size') === newLineHeight;
+      });
+      selectedIcon.addClass('selected-icon');
+
+      // Remove selected class from all links and add it to the clicked one
+      $('.font-sizes-line-height a').removeClass('selected-link');
+      selectedIcon.closest('a').addClass('selected-link');
+
+
+      document.body.style.lineHeight = newLineHeight;
+
+      closeNavDrawer(); // Close the navigation drawer after selecting a font size
+    }
+
+    // Function to change letter spacing dynamically
+    function changeLetterSpacing(newLetterSpacing) {
+
+      sessionStorage.setItem(currentUser + '-LetterSpacing', newLetterSpacing)
+      newLetterSpacing = sessionStorage.getItem(currentUser + '-LetterSpacing');
+      const icons = $('.font-sizes-letter-spacing i');
+      icons.removeClass('selected-icon');
+      const selectedIcon = icons.filter(function () {
+        return $(this).data('size') === newLetterSpacing;
+      });
+      selectedIcon.addClass('selected-icon');
+
+      // Remove selected class from all links and add it to the clicked one
+      $('.font-sizes-letter-spacing a').removeClass('selected-link');
+      selectedIcon.closest('a').addClass('selected-link');
+
+      document.body.style.letterSpacing = newLetterSpacing;
+      closeNavDrawer(); // Close the navigation drawer after selecting a font size
+    }
+
+    // localStorage.setItem("UserName", "genx.expedition@gmail.com");
+    // localStorage.setItem("CurrentWsp", "AccountWorkspace");
+
+    const createFlag = localStorage.getItem("CreateFlag");
+    const readFlag = localStorage.getItem("ReadFlag");
+    const updateFlag = localStorage.getItem("UpdateFlag");
+    const deleteFlag = localStorage.getItem("DeleteFlag");
+
+    $("body").on("click", "#logout", function () {
+      localStorage.setItem("LastSelectedUserName", localStorage.getItem("UserName"));
+      localStorage.setItem("LastSelectedProvider", localStorage.getItem("Provider"));
+      localStorage.setItem("UserName", "");
+      localStorage.setItem("Provider", "");
+
+      sessionStorage.removeItem("RoleNames", "")
+      window.location.href = "/";
+    });
+
+    var IsAdmin = false; // Replace this with your actual variable
+    // localStorage.setItem("UserName", "slope.expedition@gmail.com");
+    var lastLogin = "";
+    var firstName = "";
+    function showToolTip() {
+      console.log("on hover")
+      document.getElementById("myTooltip").style.visibility = "visible";
+      document.getElementById("myTooltip").style.opacity = 1;
+      document.getElementById("myTooltip").style.display = 'block';
+      if (IsAdmin === "True") {
+        //  console.log(document.getElementsByClassName("myTooltip"))
+
+        document.getElementById("myTooltip").style.backgroundColor = "#b32727";
+      }
+    }
+
+    function hideToolTip() {
+      console.log("off hover")
+      document.getElementById("myTooltip").style.visibility = "hidden";
+      document.getElementById("myTooltip").style.opacity = 0;
+      document.getElementById("myTooltip").style.display = "none";
+    }
+
+    // // Wait for the document to be ready
+    // $(document).ready(function () {
+
+    console.log(window.getComputedStyle(document.body).getPropertyValue('font-size'), "----", window.getComputedStyle(document.body).getPropertyValue('letter-spacing'))
+
+    
+
+   
+    var j = 1;
+    // toolbarClickHandler();
+    function loadChildPage(pageName) {
+      console.log("PageLoadEvents")
+      var indexOfQuestionMark = pageName.indexOf("?");
+      // console.log(indexOfQuestionMark);
+      if (indexOfQuestionMark != -1) {
+        // Split the string into two parts
+        var firstPart = pageName.substring(0, indexOfQuestionMark);
+        var secondPart = pageName.substring(indexOfQuestionMark + 1);
+        let pageObj = headerMenuObj.Pages.filter(x => x.HashPath == firstPart)[0];
+        // let pageUrl = "";
+        //let pageObj = headerMenuObj.Pages.filter(x => x.HashPath.substring(1) == pageHash)[0];
+        if (pageObj == undefined) {
+          pageObj = commonMenuObj.Pages.filter(x => x.HashPath == firstPart)[0];
+          pageName = pageObj.UrlPath + '?' + secondPart;
+        }
+        else {
+          pageName = pageObj.UrlPath + '?' + secondPart;
+        }
+        currentPage = pageObj.HashPath;
+      }
+      else {
+        console.log(headerMenuObj)
+        let pageObj = headerMenuObj.Pages.filter(x => x.HashPath == pageName)[0];
+        if (pageObj == undefined) {
+          pageObj = commonMenuObj.Pages.filter(x => x.HashPath == pageName)[0];
+          pageName = pageObj.UrlPath;
+        } else {
+          
+            pageName = pageObj.UrlPath;
+          
+        }
+        // pageName = headerMenuObj.AppUrl + pageObj.UrlPath;
+        currentPage = pageObj.HashPath;
+      }
+
+      sessionStorage.setItem("currentPage", currentPage)
+      
+      localStorage.setItem('ReadFlag', 'True')
+      localStorage.setItem('CreateFlag', 'True')
+      localStorage.setItem('UpdateFlag', 'True')
+      localStorage.setItem('DeleteFlag', 'True')
+      
+      const iframe = document.createElement('iframe');
+      iframe.id = "childFrame"
+      iframe.src = pageName;
+      iframe.width = '100%';
+      iframe.frameBorder = '0';
+      iframe.onload = function () {
+        var childFrame = document.getElementById("childFrame");
+        console.log(childFrame)
+        const innerDoc = childFrame.contentDocument || childFrame.contentWindow.document;
+        console.log(innerDoc.body);
+        let breadcrumbElement = innerDoc.querySelectorAll(".e-breadcrumb-text");
+        console.log(breadcrumbElement)
+        breadcrumbElement.forEach(ele => {
+          console.log(ele.innerText + selectedLanguage)
+          var label_id = ele.innerText
+          if (label_id != "") {
+            try {
+              console.log(label_id + selectedLanguage + translations)
+              ele.innerText = translations[label_id][selectedLanguage];
+            }
+            catch (error) {
+              console.log("Fetch Error -----------", error)
+            }
+          }
+          ele.setAttribute("target", "_top");
+        });
+        console.log("-----------", currentPage)
+        switch (currentPage) {
+          case "Analyse":
+            changeLanguageByClass(innerDoc, translations, selectedLanguage, "label")
+            changeLanguageByClass(innerDoc, translations, selectedLanguage, "button")
+            break;
+
+          case "Panacea":
+            changeLanguageByClass(innerDoc, translations, selectedLanguage, ".e-tick-value")
+            changeLanguageByClass(innerDoc, translations, selectedLanguage, "button")
+            changeLanguageByClass(innerDoc, translations, selectedLanguage, ".e-tick-value")
+            changeLanguageByClass(innerDoc, translations, selectedLanguage, ".slider_labeltext")
+            changeLanguageByClass(innerDoc, translations, selectedLanguage, ".row")
+            break;
+        }
+        console.log(innerDoc.getElementById("masterErrorMessage"))
+
+        if (CreatePermission == 'False' || UpdatePermission == 'False' || DeletePermission == 'False') {
+          if (innerDoc.getElementById("masterErrorMessage") != null) {
+            var error = innerDoc.getElementById("masterErrorMessage");
+            $(error).text("* Permission Not Granted")
+            console.log("Permission Not Granted")
+          }
+          else {
+            $(error).text("")
+          }
+        }
+      };
+
+      iframe.height = window.innerHeight - 90 + 'px';
+      window.addEventListener('resize', function () {
+        iframe.height = window.innerHeight - 90 + 'px';
+      });
+      document.getElementById('child-content').innerHTML = '';
+      document.getElementById('child-content').appendChild(iframe);
+    }
+
+    let headerMenuObj = null;
+    let totalMenu = null;
+    let commonMenuObj = null;
+    // Load the default child page on page load
+    window.addEventListener('load', function () {
+      // loadChildPage('TasksInventory');
+      const pageName = window.location.hash.substring(1);
+      let appName = localStorage.getItem("CurrentAppScope");
+      console.log(appName)
+      let menuObj = document.getElementById("dynamicMenu");
+      fetch("static/Common/HeaderMenu.json")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          totalMenu = data;
+
+
+          if (appName == "Panacea") {
+            // document.getElementById("header_text").setAttribute('id', 'Panacea');
+            
+
+            headerMenuObj = data.filter(x => x.AppName == appName)[0];
+            
+
+            // Function to handle link click and store active link ID
+            function handleLinkClick(event) {
+              // Remove the color and font weight from all menu items
+              document.querySelectorAll('.nav-link').forEach(link => {
+                link.style.color = '';
+                link.style.fontWeight = '';
+              });
+              document.querySelectorAll('.dropdown-item').forEach(link => {
+                link.style.color = '';
+                link.style.fontWeight = '';
+              });
+
+              // Change the color and font weight of the clicked menu item
+              event.target.style.color = 'yellowgreen';
+              event.target.style.fontWeight = 'bold';
+
+              // Store the active link ID in localStorage
+              localStorage.setItem('activeLinkId', event.target.id);
+            }
+
+            // Create navigation items and add click event listeners
+            headerMenuObj.Pages.forEach(x => {
+              if (x.IsMenuItem == "True") {
+                let liHtml = `<li class="nav-item">
+                <a class="nav-link" id="navbar_${x.HashPath}" href="/${x.HashPath}">${x.DisplayName}</a>
+            </li>`;
+                menuObj.insertAdjacentHTML('afterbegin', liHtml);
+
+                // Add event listener to change color and font weight on click
+                document.getElementById(`navbar_${x.HashPath}`).addEventListener('click', handleLinkClick);
+              }
+            });
+
+            
+            
+
+            // Apply the active styles from localStorage on page load
+            const activeLinkId = localStorage.getItem('activeLinkId');
+            if (activeLinkId) {
+              const activeLink = document.getElementById(activeLinkId);
+              if (activeLink) {
+                // activeLink.style.color = 'yellowgreen';
+                activeLink.style.fontWeight = 'bold';
+              }
+            }
+          }
+
+          if (pageName) {
+            console.log(pageName)
+            loadChildPage(pageName);
+          }
+          PageLoadEvents();
+        })
+    });
+
+    function PageLoadEvents() {
+      console.log("------", translations)
+      console.log("PageLoadEvents")
+      if (localStorage.getItem("UserName") == "" || localStorage.getItem("UserName") == null) {
+        window.location.href = "/";
+      }
+      
+
+
+      console.log(currentWsp)
+      let strippedUser = currentUser.split('@')[0];
+      console.log(strippedUser);
+      $("#user").html(strippedUser);
+      // function loadChildPage(pageName) {
+      //     document.getElementById('child-content').innerHTML = `<iframe src="${pageName}.html" width="100%" height="1000px" frameborder="0"></iframe>`;
+      // }
+      const gmailIconSpan = document.getElementById("providericon");
+      const gmailIcon = document.createElement("img");
+      gmailIcon.src = "static/CDN/images/gmail.png";
+      gmailIcon.classList.add("gmail-icon-style");
+      gmailIconSpan.appendChild(gmailIcon);
+      const leafIconSpan = document.getElementById("leaficon");
+      const leafIcon = document.createElement("img");
+      leafIcon.src = "static/CDN/images/leaficon.png";
+      leafIcon.classList.add("leaf-icon-style");
+      leafIconSpan.appendChild(leafIcon);
+      // leafIconSpan.title = "The selected provider is Gmail"
+      localStorage.setItem("CurrentWsp", localStorage.getItem("DefaultWorkspace"));
+      // $("#wspBadge").html( localStorage.getItem("DefaultWorkspace"));
+    }
+
+    // Load the child page when the hash changes (e.g., clicking on a link)
+    window.addEventListener('hashchange', function () {
+      debugger
+      const pageHash = window.location.hash.substring(1);
+      
+      if (pageHash) {
+        loadChildPage(pageHash);
+      }
+    });
+
+
+    // });
+    hideToolTip()
+  </script>
+  <div id="footer">&copy; Hacknosis: Sustainable MedTech!</div>
+</body>
+
+</html>
