@@ -1,0 +1,23 @@
+[
+  {
+    "AppName": "Panacea",
+    "FolderPath": "../",
+    "AppUrl": "http://127.0.0.1:5505/",
+    "Pages": [
+      {
+        "DisplayName": "Timeline",
+        "UrlPath": "/Timeline",
+        "HashPath": "Timeline",
+        "IsMenuItem": "False",
+        "IsActive": "True"
+      },
+      {
+        "DisplayName": "Patient Insights",
+        "UrlPath": "/Panacea",
+        "HashPath": "Insights",
+        "IsMenuItem": "False",
+        "IsActive": "True"
+      }
+    ]
+  }
+]
