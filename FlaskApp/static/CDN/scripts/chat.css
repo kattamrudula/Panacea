@@ -1,0 +1,123 @@
+/* #container {
+    visibility: hidden;
+  }
+   */
+   #loader {
+    color: #008cff !important;
+    height: 40px !important;
+    width: 30% !important;
+    position: absolute !important;
+    font-family: "Helvetica Neue", "calibiri" !important;
+    font-size: 14px !important;
+    top: 45% !important;
+    left: 45% !important;
+  }
+  
+  #chatList {
+    margin: 0 auto !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  #chatList .e-list-item {
+    height: auto !important;
+    cursor: pointer !important;
+  }
+  
+  #chatList .e-list-header .e-text {
+    font-family: sans-serif !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+  
+  #chatList #info,
+  #chatList .name {
+    font-size: 11px !important;
+    line-height: 20px !important;
+  }
+  
+  #chatList .name {
+    padding-top: 3px !important;
+    font-weight: 500 !important;
+     padding-left:150px !important;
+  }
+  #chatList #info {
+    float: right !important;
+    margin-right:10px !important;
+  }
+  .pic01 {
+    background-image: url("https://ej2.syncfusion.com/demos/src/grid/images/1.png");
+  }
+  
+  .pic02 {
+    background-image: url("https://ej2.syncfusion.com/demos/src/grid/images/3.png");
+  }
+  
+  .pic03 {
+    background-image: url("https://ej2.syncfusion.com/demos/src/grid/images/5.png");
+  }
+  
+  .pic04 {
+    background-image: url("https://ej2.syncfusion.com/demos/src/grid/images/2.png");
+  }
+  /* csslint ignore:start */
+  .img2 {
+    margin-left: 10px;
+    margin-top: 2px !important;
+    font-size: 13px;
+  }
+  
+  #chatList #content1 {
+    min-width: 50%;
+    background-color: aliceblue;
+    display: inline-block;
+    margin: 5px;
+    
+  }
+  
+  #chatList #info1,
+  #chatList .name1 {
+    font-size: 11px;
+    line-height: 20px;
+    margin-left: 10px;
+  }
+  
+  #chatList .name1 {
+    padding-top: 3px;
+    font-weight: 500;
+  }
+  #chatList #content {
+      margin: 5px;
+      min-width: 30%;
+      /* margin-left: 994px; */
+      background-color: aliceblue;
+      display:inline-block;
+      text-align: right;
+  }
+  #image {
+      float: right;
+      display: inline-block;
+  
+  }
+  #image2 {
+      float: left;
+      display: inline-block;
+  
+  }
+  .img1 {
+      margin-right: 10px;
+      margin: 5px;
+      font-size: 13px;
+  }
+  .e-listview .e-list-item {
+    padding: 0 !important;
+  }
+  .e-listview .e-list-header{
+    color: white !important;
+  }
+  .e-listview .e-list-header{
+    background: rgb(2, 120, 215) !important;
+  }
+  #chatList.e-listview .e-hover {
+    background-color: transparent;
+  }
+  /* csslint ignore:end */

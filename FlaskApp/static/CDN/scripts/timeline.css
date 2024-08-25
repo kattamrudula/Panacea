@@ -1,0 +1,231 @@
+*,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    /* body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+    } */
+
+    .timeline {
+      position: relative;
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 5px 0;
+    }
+
+    .timeline::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      background: #006e51;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+
+    .tcontainer {
+      padding: 5px 5px;
+      position: relative;
+      background: inherit;
+      width: 50%;
+    }
+
+    .tcontainer.left {
+      left: 0;
+    }
+
+    .tcontainer.right {
+      left: 50%;
+    }
+
+    .tcontainer::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: calc(50% - 8px);
+      right: -8px;
+      background: #ffffff;
+      border: 2px solid #006e51;
+      border-radius: 16px;
+      z-index: 1;
+    }
+
+    .tcontainer.right::after {
+      left: -8px;
+    }
+
+    .tcontainer::before {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      top: calc(50% - 1px);
+      right: 8px;
+      background: #006e51;
+      z-index: 1;
+    }
+
+    .tcontainer.right::before {
+      left: 8px;
+    }
+
+    .tcontainer .date {
+      position: absolute;
+      display: inline-block;
+      top: calc(50% - 8px);
+      text-align: center;
+      font-size: 10px;
+      font-weight: bold;
+      color: #006e51;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 1;
+      width: 90px;
+    }
+
+    .tcontainer.left .date {
+      right: -100px;
+    }
+
+    .tcontainer.right .date {
+      left: -100px;
+    }
+
+    .tcontainer .icon {
+      position: absolute;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      /* padding: 9px 0; */
+      top: calc(50% - 20px);
+      background: #f6d155;
+      border: 2px solid #006e51;
+      border-radius: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #006e51;
+      z-index: 1;
+    }
+
+    .tcontainer.left .icon {
+      right: 25px;
+    }
+
+    .tcontainer.right .icon {
+      left: 25px;
+    }
+
+    .tcontainer .content {
+      padding: 10px 70px 10px 10px;
+      background: #f6d155;
+      position: relative;
+      border-radius: 0 500px 500px 0;
+    }
+
+    .tcontainer.right .content {
+      padding: 10px 10px 10px 70px;
+      border-radius: 500px 0 0 500px;
+    }
+
+    .tcontainer .content h2 {
+      margin: 0 0 6px 0;
+      font-size: 12px;
+      font-weight: normal;
+      color: #006e51;
+    }
+
+    .tcontainer .content div {
+      margin: 0;
+      font-size: 10px;
+      line-height: 12px;
+      color: #000000;
+    }
+
+    @media (max-width: 767.98px) {
+      .timeline::after {
+        left: 90px;
+      }
+
+      .tcontainer {
+        width: 100%;
+        padding-left: 120px;
+        padding-right: 30px;
+      }
+
+      .tcontainer.right {
+        left: 0%;
+      }
+
+      .tcontainer.left::after,
+      .tcontainer.right::after {
+        left: 82px;
+      }
+
+      .tcontainer.left::before,
+      .tcontainer.right::before {
+        left: 100px;
+        border-color: transparent #006e51 transparent transparent;
+      }
+
+      .tcontainer.left .date,
+      .tcontainer.right .date {
+        right: auto;
+        left: 15px;
+      }
+
+      .tcontainer.left .icon,
+      .tcontainer.right .icon {
+        right: auto;
+        left: 100px;
+      }
+
+      .tcontainer.left .content,
+      .tcontainer.right .content {
+        padding: 10px 10px 10px 10px;
+        border-radius: 500px 0 0 500px;
+      }
+    }
+
+    .ctooltip {
+      position: relative;
+      display: inline-block;
+      /* border-bottom: 1px dotted black; */
+    }
+
+    .ctooltip .ctooltiptext {
+      visibility: hidden;
+      width: 400px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -60px;
+    }
+
+    .ctooltip .ctooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: black transparent transparent transparent;
+      z-index:1
+    }
+
+    .ctooltip:hover .ctooltiptext {
+      visibility: visible;
+    }
