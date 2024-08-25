@@ -1,0 +1,11 @@
+```json
+{
+  "EmotionWords": [
+    "concerned",
+    "fears",
+    "avoid delaying treatment",
+    "wants to schedule",
+    "assure her" 
+  ]
+}
+``` 

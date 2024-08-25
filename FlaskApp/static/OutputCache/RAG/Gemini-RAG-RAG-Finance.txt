@@ -1,0 +1,1 @@
+{"output_text": "The provided context does not contain information about when the patient was registered. It only provides details about the patient's visit on July 31, 2023. \n"}

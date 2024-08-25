@@ -1,0 +1,1 @@
+{"input_tokens": 330, "output_tokens": 30, "text": "I am sorry, I cannot provide medical diagnosis or interpretation of medical images.  It is important to have this image reviewed by a qualified medical professional. \n"}

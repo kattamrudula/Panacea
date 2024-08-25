@@ -1,0 +1,1 @@
+{"input_tokens": 170, "output_tokens": 62, "text": "Cynthia is concerned about potential gallstones. Her doctor explains that it could be the cause of her indigestion, and while a diet change might help, surgery may eventually be necessary. The doctor reassures Cynthia that it's not an emergency and they can work around her upcoming two-week family vacation to Mexico. \n"}

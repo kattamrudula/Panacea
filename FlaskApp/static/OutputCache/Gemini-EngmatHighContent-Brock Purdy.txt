@@ -1,0 +1,26 @@
+```json
+{
+  "EngMatWords": [
+    "medication management",
+    "Presenting Issue",
+    "Past Psychiatric History",
+    "Current Medications",
+    "Supplements",
+    "Social History",
+    "Mental Status Exam",
+    "Diagnosis",
+    "Treatment Plan",
+    "follow-up appointment",
+    "potential gallstones",
+    "low-fat diet",
+    "surgery",
+    "immediate concern",
+    "upcoming 2-week vacation",
+    "work around it",
+    "possible gallstones",
+    "avoid delaying treatment",
+    "two-week family vacation",
+    "schedule any necessary procedures"
+  ]
+}
+``` 

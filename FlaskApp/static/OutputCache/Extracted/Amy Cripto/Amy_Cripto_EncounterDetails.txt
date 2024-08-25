@@ -1,0 +1,389 @@
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+History of Present Illness
+Reason for visit: Medication Management
+Reviewed limits of confidentiality. Patient/parent/legal guardian expressed understanding and voluntarily agreed to proceed
+with the visit.
+This visit is conducted in office.
+The visit was attended alone
+Referral source: Google search
+History of present illness
+Patient reports
+Problematic symptoms:
+Associated symptoms:
+Duration:
+Progression:
+Precipitating factors/stressors:
+Alleviating factors:
+Symptoms cause impairments in:
+Suicidal or homicidal ideations, plan or intent:
+Further details of symptoms below in psychiatric review of systems.
+Past Medical History
+Any past Hospitalizations? No
+Past Psychiatric History
+Diagnoses:
+Depression
+â Major depressive disorder
+Generated on Aug 01,2023 13:21 Page 1 of 10 CharmClinic
+
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+History of:
+None of the following
+Self-injurious behaviors
+Medical History
+Current Active Medical Issues:
+${Patient.Diagnoses}
+Serious illnesses (eg. cancer, blood clot, stroke, heart attack, autoimmune disease, organ failure/damage):
+None
+Traumatic brain injuries or concussions: No
+Seizures: No
+Medical Hospitalizations/Surgeries/Procedures/Blood transfusions:
+test est
+Active Medications:
+0 desvenlafaxine 25 mg oral tablet, extended release - 1 tablet(s) once a day before a meal for 30 , oral route.
+Recommended times 8am, 2pm , 6pm.
+0 escitalopram 10 mg oral tablet - Start with half tab daily for 7 days, then increase to 1 tablet(s) once a day in the
+morning
+â¢ ibuprofen 800 mg oral tablet - 800 mg every 6 to 8 hours before a meal , oral route
+0 propranolol 10 mg oral tablet - 1 tablet(s) 3 times a day as needed for anxiety/panic
+0 dicyclomine 10 mg/mL intramuscular solution - 10 mg 4 times a day before a meal , intramuscular route
+0 ibuprofen 100 mg/5 mL oral suspension - 1 once a day before a meal for 1 Day(s), oral route
+0 Ibuprphone - 1 tablet(s) once a day before a meal for 10 Day(s), compounding route
+o ibuprofen 200 mg oral tablet - 1 tablet(s) once a day before a meal for 10 Day(s), oral route
+Supplements
+Active Supplements:
+0 Complete Vitamin C CTW - 1 application Once a day(After Meals for 10 Day(s))
+0 Aminolase TPA 90 caps - 1 application Once a day(After Meals for 10 Day(s))
+0 120/80 Blood Pressure 60 caps - 1 gram/m2 ()
+o Vitamin - 1 capsule(s) Once(With Breakfast)- Comments about the supp
+0 Ananda Professional Topical Salve - 1 application Once a day(Before Meals for 10 Day(s))
+Generated on Aug 01,2023 13:21 Page 2 of 10 CharmClinic
+
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+0 Calcium 500 mg tablet - 1 application Once a day(Before Meals for 10 Day(s))
+Allergies:
+Specific diet or nutrition plan: None
+Family and Social History
+Developmental History
+Delivery/Birth:
+Full term
+Vaginal
+Complications: None
+Milestones met by expected age for:
+Talking
+Walking
+Eating
+Toilet Training
+Reading
+Writing
+Academic performance: Average
+Housing/living situation: Stable housing
+Military: None
+Legal (list year(s) and reason(s)): None
+Trauma history: No history of significant trauma.
+Support system:
+Good
+Family
+Friends
+Alcohol/substance use (include amount, frequency, age of onset, last use):
+No current daily or problematic use of alcohol
+No current daily or problematic use of substance(s)
+No current daily or problematic use of nicotine
+Other addictions: None
+Review of Systems
+A complete review of systems is performed and is negative except where documented.
+Metabolic risk factors (select all that apply): None reported
+Psychiatric: Per HPI and as detailed below.
+Generated on Aug 01,2023 13:21 Page 3 of 10 CharmClinic
+
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+Bipolar Disorder
+No symptoms of mania or hypomania in the past
+No symptoms of mania or hypomania currently
+Schizophrenia No signs or symptoms of psychosis
+Post Traumatic Stress Disorder No history of traumatic experience(s)
+Attention-Deficit/Hyperactivity Disorder Not assessed today
+Obsessive Compulsive Disorder Not assessed today
+Eating Disorders No restricting, binging or purging
+Oppositional Defiant Disorder Not assessed today
+Health Vitals
+Height: 5 ft 9 ins
+Physical Examination
+Vitals
+Obtained at this visit: No
+Physical Exam
+Constitutional: Well-developed. Well-nourished. Active. No acute distress.
+HEENNT:
+Head: Atraumatic.
+Eyes: Extraocular movements intact. Pupils are equal, round. Palpebral fissures symmetrical. Lids have normal size, position
+and motility. No lid lag. Lashes and eyebrows show normal texture, amount and distribution. Sclera white, no icterus.
+Conjunctiva clear without discharge.
+Ears: Auricle and tragus have normal size, shape, symmetry and location.
+Nose: No nasal discharge. Airways patent.
+Neck/Throat: Symmetrical. Normal range of motion. Trachea midline and freely moveable. No jugular venous distension while
+patient seated upright.
+Cardiovascular: No extremity edema. No cyanosis.
+Pulmonary/Chest: No respiratory distress. Breathing room air. Respirations even and unlabored..
+Abdominal: No distension.
+Musculoskeletal:
+Normal range of motion.
+No muscle atrophy.
+Normal gait.
+No joint swelling or erythema.
+Neurological:
+Generated on Aug 01,2023 13:21 Page 4 of 10 CharmClinic
+
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+Patient is awake and alert.
+Is not lethargic, confused, stuporous, drowsy, asleep, vigilant.
+Is not exhibiting fluctuations in level of consciousness.
+No tremors, fasciculations or involuntary movements noted.
+Cranial nerves 11-IX and XI-XII grossly intact bilaterally.
+Facial function symmetric.
+Skin:
+Not diaphoretic.
+No rashes, lesions, bruising, masses, excoriations or lichenification.
+Mental Status Exam
+General:
+Casually dressed
+Well-nourished
+Well-developed
+Dressed appropriately for weather
+Appears stated age
+Gait/Station: Normal, unassisted
+Psychomotor activity: Normal
+Muscle Tone/Strength: Good
+Behavior:
+Good eye contact
+Calm
+Cooperative
+Speech:
+Normal rate and rhythm
+Normal volume
+Affect:
+Constricted
+Mood congruent
+Dysphoric
+Anxious
+Thought Process:
+Clear, logical, linear
+Coherent and goal directed
+Thought Content: No abnormal or psychotic thoughts
+Generated on Aug 01,2023 13:21 Page 5 of 10 CharmClinic
+
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+Suicidal/Homicidal Ideation: Absent
+Orientation Alert and oriented to person, place, time, situation
+Attention Span and Concentration Intact during interview
+Fund of Knowledge Adequate
+Memory
+Recent
+â Intact by history and interview
+Remote
+â Intact by history and interview
+Judgment and Insight Judgement and Insight Intact
+Assessment Notes
+The diagnosis of psychiatric illness is a complex integration of history, psychiatric, medical and physical findings, social and
+developmental history, history of substance abuse as well as MSE. Considerations include mood disorders, psychotic
+disorders, substance induced disorders, anxiety and trauma disorders, and many others. These have all been considered in
+formulating the diagnoses/diagnosis below. This may change as more information arises and further diagnostic clarification is
+performed.
+Diagnoses
+Generated on Aug 01,2023 13:21 Page 6 of 10 CharmClinic
+
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+Diagnosis Code Comments
+Other obesity E66.8
+Post-traumatic stress disorder, unspecified F43.10
+Post-traumatic stress disorder, chronic F43.12
+Major depressive disorder, single episode, mild F32.0
+Major depressive disorder, single episode,
+F32.1
+moderate
+Major depressive disorder, single episode, severe
+F32.2
+without psychotic features
+Major depressive disorder, single episode, in partial
+F32.4
+remission
+Dysthymic disorder F34.1
+Adjustment disorder with depressed mood F43.21
+Adjustment disorder with anxiety F43.22
+Adjustment disorder with mixed anxiety and
+depressed mood
+F43.23
+Other situational type phobia F40.248
+Other specified phobia F40.298
+Panic disorder [episodic paroxysmal anxiety] F41.0
+Social phobia, unspecified F40.10
+Generalized anxiety disorder F41.1
+Epilepsy, unspecified, not intractable, without
+G40.909 --
+status epilepticus
+Rx
+Generated on Aug 01,2023 13:21 Page 7 of 10 CharmClinic
+
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+Prescription Directions Details
+1 tablet(s) once a day
+before a meal for 30 , Dispense :30 Tablet, Refill
+desvenlafaxine 25 mg oral tablet, extended release
+oral route. :0,Generic Allowed, I gave it at 2
+[ Desvenlafaxine ]
+Recommended times pm
+8am, 2pm , 6pm.
+800 mg every 6 to 8
+Dispense :1 Capsule, Refill :21,
+ibuprofen 800 mg oral tablet [ Ibuprofen ] hours before a meal ,
+Manufactured,Generic Allowed
+oral route
+Lab Tests
+Lab Name Test Name
+General BASIC METABOLIC PANEL
+General CBC w/diff
+General Hepatic (Liver) Panel
+General Blood cultures
+General Sputum Culture
+General Procalcitonin
+General Rapid flu/RSV
+General RVP
+Treatment Notes
+Safety
+Patient denies any suicidal or homicidal ideations, plan or intent at this time.
+Patient is future-oriented and treatment seeking.
+Patient has support system in place.
+Patient denies access to firearms or lethal weapons.
+Plan:
+Advised patient/parent/legal guardian to sign ROI for the following to assist with coordination of care:
+â PCP
+Informed Consent:
+Diagnoses, medication allergy and medication reconciliation completed.
+Generated on Aug 01,2023 13:21 Page 8 of 10 CharmClinic
+
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+Discussed:
+â Interpretation of psychiatric evaluation with patient/parent/legal guardian/family, including diagnosis, differential
+diagnosis and prognosis.
+â Management and treatment options with patient/parent/guardian/significant other/family member.
+â Risks, benefits, side effects, and alternatives to these treatments with patient/parent/legal guardian.
+â Risks of nonadherence to treatment recommendations and medications, including but not limited to, exacerbation of
+psychiatric symptoms, decompensation in mood and discontinuation symptoms.
+â Importance of taking medication(s) as prescribed and importance of notifying the Physician prior to stopping
+medication(s) abruptly.
+Informed consent given for medication regimen.
+Answered all questions that the patient/parent/legal guardian asked. â Psychoeducation discussed with
+patient/parent/legal guardian. Patient /parent/legal guaridan verbally acknowledged understanding of psychoeducation,
+treatment plan rationale, treatment options, and expressed verbal agreement with plan.
+Patient/parent/legal guardian agree to call office or send message via the secure CHARM EHR patient portal for any
+questions or concerns.
+Potential drug-to-drug interactions accounted for. Benefits outweigh risk.
+Potential medication side effects General medication side effects reviewed including risk of Steven Johnson Syndrome
+(including warning signs and to go to the ED if rash develops), risk of harm to fetus if pregnant, importance of use of birth
+control emphasized, and FDA off-label use of medication.
+Medical Follow-up by PCP/Specialists/Other referrals:
+Will coordinate care as needed.
+Routine follow up with PCP.
+Follow up planning
+Follow up scheduled.
+Patient is aware follow-up can be moved to closer need as clinically indicated.
+Patient/parent encouraged to reach out to me if any questions/concerns arise after this visit.
+If symptoms worsen, or there is no improvement, call office for follow-up or seek emergency care.
+If any crisis or emergency: call 911 or go to the emergency room.
+Return to clinic 4 weeks
+Linh Phuong (Trish) Dinh, MD
+General Psychiatry
+Beacon Psychiatry, LLC
+3610 Galileo Drive., Suite 101
+Trinity, FL 34655
+Phone: 727-910-2385 Ext. 100
+Fax: 866-698-8309
+www.beaconpsychiatry.org
+Handouts & Educational Resources
+Generated on Aug 01,2023 13:21 Page 9 of 10 CharmClinic
+
+4
+CharmClinic
+300 Commerce St.
+Nashvile, California - 12344-5565
+Patient : Amy Cripto Record Id : CHARM0030
+Date of Birth : Jan 01, 2010 Age / Gender : 13 / unknown
+Provider : Dr. Angela Smith Date of Visit : Jul 31, 2023
+Visit Type : New Patient Visit
+Resources Link
+Drug/ibuprofen
+https://medlineplus.gov/druginfo/meds/a682159.html?
+utm_source=mplusconnect&utm_medium=service
+Follow up
+Type Notes Date
+Lab Tests
+Please schedule
+appointment with the
+office coordinator to
+review your labs.
+in 1 weeks
+tr---
+Dr. Angela Smith
+Electronically Signed By Dr. Angela Smith on Aug 01, 2023 01:20 PM
+Generated on Aug 01,2023 13:21 Page 10 of 10 CharmClinic

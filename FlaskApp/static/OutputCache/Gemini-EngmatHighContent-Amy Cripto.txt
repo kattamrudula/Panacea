@@ -1,0 +1,26 @@
+```json
+{
+  "EngMatWords": [
+    "Major Depressive Disorder",
+    "single episode",
+    "mild",
+    "Other obesity",
+    "Past History",
+    "Medical History",
+    "Mental Status Exam",
+    "well-developed",
+    "well-nourished",
+    "Treatment Plan",
+    "medication reconciliation",
+    "informed consent",
+    "primary care physician",
+    "PCP",
+    "gallstones",
+    "indigestion",
+    "surgery",
+    "reassures",
+    "emergency",
+    "work around"
+  ]
+}
+``` 

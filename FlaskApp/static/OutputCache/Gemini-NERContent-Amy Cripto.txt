@@ -1,0 +1,19 @@
+```json
+{
+  "hospital_names": ["CharmClinic"],
+  "patient_names": ["Amy Cripto", "Cynthia"],
+  "doctor_names": [],
+  "locations": ["Mexico"],
+  "medication_names": ["desvenlafaxine", "ibuprofen", "propranolol", "dicyclomine", "Vitamin C", "Aminolase", "Calcium"],
+  "dates": ["July 31, 2023", "4 weeks"]
+}
+```
+
+**Explanation:**
+
+* **hospital_names:**  "CharmClinic" is explicitly mentioned as the clinic where Amy Cripto visited.
+* **patient_names:**  "Amy Cripto" is the patient mentioned in the first part of the report, and "Cynthia" is the patient mentioned in the second part.
+* **doctor_names:** The report doesn't mention the doctor's name, only refers to them as "her doctor".
+* **locations:**  "Mexico" is mentioned as the destination for Cynthia's upcoming vacation.
+* **medication_names:**  The report lists "desvenlafaxine", "ibuprofen", "propranolol", "dicyclomine", "Vitamin C", "Aminolase", and "Calcium" as medications and supplements Amy is taking.
+* **dates:**  "July 31, 2023" is the date of Amy's visit, and "4 weeks" is the timeframe for her follow-up appointment. 

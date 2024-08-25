@@ -1,0 +1,1 @@
+{"input_tokens": 330, "output_tokens": 33, "text": "I am sorry, I cannot provide medical advice. I am an AI and am not qualified to interpret medical images. Please consult with a medical professional for a diagnosis. \n"}

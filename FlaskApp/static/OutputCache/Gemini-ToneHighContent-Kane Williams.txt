@@ -1,0 +1,1 @@
+Please provide me with the report text so I can analyze it and identify the key words or phrases that contribute to its tone. I'll then return the results in JSON format as you requested. 

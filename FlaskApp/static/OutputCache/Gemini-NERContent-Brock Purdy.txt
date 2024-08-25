@@ -1,0 +1,51 @@
+```json
+{
+  "patient_name": "Brock Purdy",
+  "doctor_name": "Dr. Angela Smith",
+  "hospital_name": null, 
+  "location": null,
+  "medication_names": [
+    "desvenlafaxine",
+    "escitalopram",
+    "ibuprofen",
+    "propranolol",
+    "dicyclomine"
+  ],
+  "dates": [
+    "4 weeks"
+  ],
+  "supplement_names": [
+    "vitamin C",
+    "Aminolase",
+    "blood pressure supplement",
+    "multivitamin",
+    "topical salve"
+  ]
+}
+```
+
+**Notes:**
+
+* There is no hospital name mentioned in the text. 
+* There is no specific location mentioned. The report mentions the patient lives in a stable housing situation but doesn't specify where.
+*  The report does not mention any specific dates except for the 4-week follow-up appointment.
+
+**Cynthia's Report:**
+
+```json
+{
+  "patient_name": "Cynthia",
+  "doctor_name": null,
+  "hospital_name": null,
+  "location": null,
+  "medication_names": [],
+  "dates": [],
+  "supplement_names": []
+}
+```
+
+**Notes:**
+
+* The doctor's name is not mentioned.
+* The report mentions a vacation to Mexico but does not mention any specific dates or locations. 
+* There are no medications or supplements mentioned in this part of the report. 

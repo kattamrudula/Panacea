@@ -1,0 +1,24 @@
+```json
+{
+  "SentimentWords": [
+    "Major Depressive Disorder",
+    "Other obesity",
+    "well-developed", 
+    "well-nourished", 
+    "normal", 
+    "cooperative", 
+    "good eye contact", 
+    "safety plan", 
+    "medication reconciliation", 
+    "informed consent", 
+    "treatment plan", 
+    "follow up", 
+    "return", 
+    "positive", 
+    "good support system", 
+    "reassures",
+    "not an emergency",
+    "work around"
+  ]
+}
+``` 

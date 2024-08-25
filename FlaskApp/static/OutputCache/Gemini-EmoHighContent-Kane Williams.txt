@@ -1,0 +1,14 @@
+Please provide me with the report text so I can analyze it and extract the key words or phrases that indicate the emotion. I need the actual content of the report to do this. 
+
+For example, you could say:
+
+"**Report:** 
+The project was a resounding success. The team exceeded expectations and delivered exceptional results. We are incredibly proud of their achievements." 
+
+Once you provide the report, I will be able to identify the emotion-related words and phrases and return them in a JSON format like this:
+
+```json
+{
+  "EmotionWords": ["resounding success", "exceeded expectations", "exceptional results", "incredibly proud"]
+}
+``` 

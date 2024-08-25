@@ -1,0 +1,12 @@
+```json
+{
+  "Emotion": "Fear"
+}
+```
+
+Here's why:
+
+* **Cynthia's Concern:** The report states that Cynthia is "concerned" about potential gallstones. This concern suggests a level of anxiety and fear about the potential health issue.
+* **Potential Surgery:**  The doctor mentioning surgery, even though it might not be immediate, can trigger fear and worry. 
+* **Impact on Vacation:**  Cynthia's concern about how gallstones might impact her vacation further reinforces the feeling of fear and worry. 
+* **Reassurance:** While the doctor's reassurance is a positive aspect, the initial fear triggered by the potential diagnosis remains significant. 

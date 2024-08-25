@@ -1,0 +1,13 @@
+```json
+{
+  "SentimentWords": [
+    "concerned",
+    "fears",
+    "surgery",
+    "emergency",
+    "avoid delaying treatment",
+    "two-week family vacation",
+    "schedule any necessary procedures"
+  ]
+}
+``` 

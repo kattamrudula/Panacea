@@ -1,0 +1,1 @@
+{"input_tokens": 330, "output_tokens": 44, "text": "I am sorry, I cannot provide medical advice.  I am not a qualified physician and cannot interpret medical images. I recommend you consult with a doctor or other qualified healthcare provider if you have concerns about an MRI scan. \n"}

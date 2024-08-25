@@ -1,0 +1,12 @@
+```json
+{
+  "ToneWords": [
+    "concerned",
+    "fears",
+    "surgery",
+    "avoid delaying treatment",
+    "schedule any necessary procedures",
+    "work around"
+  ]
+}
+``` 

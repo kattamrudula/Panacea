@@ -1,0 +1,9 @@
+Please provide me with the report text so I can identify the key words or phrases that contribute to determining the sentiment. 
+
+For example, you could provide the report text like this:
+
+```
+"This quarter's results were disappointing. Sales declined by 10%, and customer satisfaction ratings are lower than expected. We need to improve our product quality and customer service to turn things around."
+```
+
+Once you provide the report text, I can analyze it and return the sentiment words in JSON format as you requested. 
